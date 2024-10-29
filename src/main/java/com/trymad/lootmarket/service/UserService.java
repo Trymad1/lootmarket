@@ -33,4 +33,11 @@ public class UserService {
         userDao.deleteById(uuid);
     }
 
+    public void enrichUserData(User user) {
+        final User inBaseUser = this.getUser(user.getId());
+        user.setLastEnter(inBaseUser.getLastEnter());
+        user.setLastUpdate(inBaseUser.getLastUpdate());
+        user.setRegistationDate(inBaseUser.getRegistationDate());
+    }
+
 }

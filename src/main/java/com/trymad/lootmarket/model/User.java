@@ -14,10 +14,11 @@ public class User {
     private String name;
     private String mail;
     private String password;
-    private boolean place_service;
-    private boolean place_review;
-    private boolean use_service;
-    private LocalDateTime registation_date;
-    private LocalDateTime last_enter;
+    private boolean placeService;
+    private boolean placeReview;
+    private boolean useService;
+    private LocalDateTime registationDate;
+    private LocalDateTime lastEnter;
+    private LocalDateTime lastUpdate;
 
 }
