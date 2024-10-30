@@ -1,6 +1,6 @@
 CREATE TABLE
     IF NOT EXISTS users (
-        id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+        id UUID PRIMARY KEY,
         name VARCHAR(25) NOT NULL UNIQUE,
         mail VARCHAR(100) NOT NULL UNIQUE,
         password VARCHAR(25) NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS services (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        user_id INT NOT NULL,
+        user_id UUID NOT NULL,
         service_category_id INT NOT NULL,
         brief_desc VARCHAR(50) NOT NULL,
         detailed_desc TEXT NOT NULL,
@@ -44,8 +44,8 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS messages (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        sender_id INT NOT NULL,
-        recipient_id INT NOT NULL,
+        sender_id UUID NOT NULL,
+        recipient_id UUID NOT NULL,
         message_text VARCHAR(255) NOT NULL,
         send_date TIMESTAMP NOT NULL,
         FOREIGN KEY (sender_id) REFERENCES users (id),
@@ -61,7 +61,7 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS payment_details (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        user_id INT NOT NULL,
+        user_id UUID NOT NULL,
         payment_system_id INT NOT NULL,
         details VARCHAR(20) NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
@@ -78,7 +78,7 @@ CREATE TABLE
     IF NOT EXISTS deals (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         service_id INT NOT NULL,
-        user_buyer_id INT NOT NULL,
+        user_buyer_id UUID NOT NULL,
         payment_system_id INT NOT NULL,
         deal_status_id INT NOT NULL,
         quantity_purchased INT,
@@ -93,7 +93,7 @@ CREATE TABLE
 CREATE TABLE
     IF NOT EXISTS reviews (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        user_id INT NOT NULL,
+        user_id UUID NOT NULL,
         deal_id INT NOT NULL,
         grade INT NOT NULL,
         comment VARCHAR(255) NOT NULL,
