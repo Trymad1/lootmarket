@@ -9,5 +9,4 @@ public class LootmarketApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LootmarketApplication.class, args);
 	}
-
 }

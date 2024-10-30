@@ -14,7 +14,7 @@ public class UserViewDTO {
     private String id;
     private String name;
     private String mail;
-    private LocalDateTime registationDate;
+    private LocalDateTime registrationDate;
     private LocalDateTime lastEnter;
     private LocalDateTime lastUpdate;
 

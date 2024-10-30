@@ -3,7 +3,9 @@ package com.trymad.lootmarket.service;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.trymad.lootmarket.dao.UserDao;
 import com.trymad.lootmarket.model.User;
@@ -16,19 +18,28 @@ public class UserService {
 
     private final UserDao userDao;
 
+    @Transactional(readOnly = true)
     public User getUser(UUID uuid) {
         return userDao.findById(uuid).orElseThrow(
                 () -> new RuntimeException("User with id " + uuid.toString() + " not found"));
     }
 
+    @Transactional(readOnly = true)
     public List<User> getAllUsers() {
         return userDao.findAll();
     }
 
+    @Transactional
     public User saveUser(User user) {
         return userDao.save(user);
     }
 
+    @Transactional
+    public User updateUser(User user) {
+        return userDao.update(user);
+    }
+
+    @Transactional
     public void deleteUser(UUID uuid) {
         userDao.deleteById(uuid);
     }
@@ -37,7 +48,7 @@ public class UserService {
         final User inBaseUser = this.getUser(user.getId());
         user.setLastEnter(inBaseUser.getLastEnter());
         user.setLastUpdate(inBaseUser.getLastUpdate());
-        user.setRegistationDate(inBaseUser.getRegistationDate());
+        user.setRegistrationDate(inBaseUser.getRegistrationDate());
     }
 
 }
