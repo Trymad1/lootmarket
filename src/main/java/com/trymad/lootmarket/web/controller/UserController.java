@@ -11,7 +11,6 @@ import com.trymad.lootmarket.web.dto.mapper.UserDtoMapper;
 
 import lombok.RequiredArgsConstructor;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
