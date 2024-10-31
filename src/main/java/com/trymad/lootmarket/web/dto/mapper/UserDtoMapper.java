@@ -30,7 +30,7 @@ public interface UserDtoMapper {
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "name")
     @Mapping(target = "mail", source = "mail")
-    @Mapping(target = "registationDate", source = "registationDate")
+    @Mapping(target = "registrationDate", source = "registrationDate")
     @Mapping(target = "lastEnter", source = "lastEnter")
     @Mapping(target = "lastUpdate", source = "lastUpdate")
     User toEntityUserView(UserViewDTO dto);

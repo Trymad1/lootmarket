@@ -30,7 +30,7 @@ public class DummyUserDaoImpl implements UserDao {
                 .placeReview(true)
                 .placeService(true)
                 .useService(true)
-                .registationDate(LocalDateTime.now().minusDays(10))
+                .registrationDate(LocalDateTime.now().minusDays(10))
                 .lastEnter(LocalDateTime.now().minusHours(5))
                 .lastUpdate(LocalDateTime.now())
                 .build());
@@ -42,7 +42,7 @@ public class DummyUserDaoImpl implements UserDao {
                 .placeReview(true)
                 .placeService(true)
                 .useService(false)
-                .registationDate(LocalDateTime.now().minusDays(40))
+                .registrationDate(LocalDateTime.now().minusDays(40))
                 .lastEnter(LocalDateTime.now().minusHours(2))
                 .lastUpdate(LocalDateTime.now())
                 .build());
@@ -54,7 +54,7 @@ public class DummyUserDaoImpl implements UserDao {
                 .placeReview(false)
                 .placeService(true)
                 .useService(true)
-                .registationDate(LocalDateTime.now().minusDays(100))
+                .registrationDate(LocalDateTime.now().minusDays(100))
                 .lastEnter(LocalDateTime.now().minusHours(17))
                 .lastUpdate(LocalDateTime.now())
                 .build());
@@ -79,6 +79,12 @@ public class DummyUserDaoImpl implements UserDao {
     @Override
     public void deleteById(UUID uuid) {
         db.remove(uuid);
+    }
+
+    @Override
+    public User update(User user) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'update'");
     }
 
 }
