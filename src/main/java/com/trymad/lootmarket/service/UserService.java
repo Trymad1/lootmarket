@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.trymad.lootmarket.dao.user.UserDao;
 import com.trymad.lootmarket.model.User;
 
+import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -20,7 +21,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public User getUser(UUID uuid) {
         return userDao.findById(uuid).orElseThrow(
-                () -> new RuntimeException("User with id " + uuid.toString() + " not found"));
+                () -> new EntityNotFoundException("User with id " + uuid.toString() + " not found"));
     }
 
     @Transactional(readOnly = true)
