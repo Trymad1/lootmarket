@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
 import com.trymad.lootmarket.model.User;
@@ -14,7 +13,6 @@ import lombok.AllArgsConstructor;
 
 @Repository
 @AllArgsConstructor
-@Primary
 public class HibernateUserDao implements UserDao {
 
     private final EntityManager entityManager;
@@ -37,7 +35,7 @@ public class HibernateUserDao implements UserDao {
 
     @Override
     public User update(User user) {
-        entityManager.getReference(User.class, user.getId()).getId();
+        entityManager.getReference(User.class, user.getId()).getId(); // check on exist
         entityManager.merge(user);
         return user;
     }
