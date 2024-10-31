@@ -5,11 +5,9 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.trymad.lootmarket.model.User;
 
@@ -25,55 +23,31 @@ public class HibernateUserDao implements UserDao {
 
     @Override
     public List<User> findAll() {
-
-        List<User> allUsers = null;
-        try (Session session = entityManager.unwrap(Session.class)) {
-
-            Query<User> query = session.createQuery("FROM User", User.class);
-            allUsers = query.list();
-
-        }
-
-        return allUsers;
+        return entityManager.createQuery("FROM User", User.class).getResultList();
     }
 
     @Override
     public Optional<User> findById(UUID uuid) {
-        User user = null;
-
-        try (Session session = entityManager.unwrap(Session.class)) {
-            user = session.get(User.class, uuid);
-        }
-
-        return Optional.ofNullable(user);
+        return Optional.ofNullable(entityManager.find(User.class, uuid));
     }
 
     @Override
     public User save(User user) {
-
-        try (Session session = entityManager.unwrap(Session.class)) {
-            session.persist(user);
-        }
-
+        entityManager.persist(user);
         return user;
     }
 
     @Override
     public User update(User user) {
-        try (Session session = entityManager.unwrap(Session.class)) {
-            session.getReference(User.class, user.getId()).getId();
-            session.merge(user);
-        }
-
+        entityManager.getReference(User.class, user.getId()).getId();
+        entityManager.merge(user);
         return user;
     }
 
     @Override
     public void deleteById(UUID uuid) {
-        try (Session session = entityManager.unwrap(Session.class)) {
-            User user = session.getReference(User.class, uuid);
-            session.remove(user);
-        }
+        final User user = entityManager.getReference(User.class, uuid);
+        entityManager.remove(user);
     }
 
 }
