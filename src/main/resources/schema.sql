@@ -9,19 +9,19 @@ CREATE TABLE IF NOT EXISTS users (
         registration_date TIMESTAMP NOT NULL,
         last_enter TIMESTAMP NOT NULL,
         last_update TIMESTAMP NOT NULL
-    );
+);
 
 CREATE TABLE IF NOT EXISTS games (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         name VARCHAR(50) NOT NULL UNIQUE
-    );
+);
 
 CREATE TABLE IF NOT EXISTS services_category (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         name VARCHAR(50) NOT NULL UNIQUE,
         game_id INT NOT NULL,
         FOREIGN KEY (game_id) REFERENCES games (id) ON DELETE CASCADE
-    );
+);
 
 CREATE TABLE IF NOT EXISTS services (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS services (
         update_date TIMESTAMP NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
         FOREIGN KEY (service_category_id) REFERENCES services_category (id)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS messages (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -45,12 +45,12 @@ CREATE TABLE IF NOT EXISTS messages (
         send_date TIMESTAMP NOT NULL,
         FOREIGN KEY (sender_id) REFERENCES users (id),
         FOREIGN KEY (recipient_id) REFERENCES users (id)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS payment_systems (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         name VARCHAR(20) NOT NULL
-    );
+);
 
 CREATE TABLE IF NOT EXISTS payment_details (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -59,12 +59,12 @@ CREATE TABLE IF NOT EXISTS payment_details (
         details VARCHAR(20) NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
         FOREIGN KEY (payment_system_id) REFERENCES payment_systems (id)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS deal_status (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         name VARCHAR(20) NOT NULL
-    );
+);
 
 CREATE TABLE IF NOT EXISTS deals (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -79,7 +79,7 @@ CREATE TABLE IF NOT EXISTS deals (
         FOREIGN KEY (user_buyer_id) REFERENCES users (id),
         FOREIGN KEY (payment_system_id) REFERENCES payment_systems (id),
         FOREIGN KEY (deal_status_id) REFERENCES deal_status (id)
-    );
+);
 
 CREATE TABLE IF NOT EXISTS reviews (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
@@ -90,4 +90,4 @@ CREATE TABLE IF NOT EXISTS reviews (
         DATE TIMESTAMP NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
         FOREIGN KEY (deal_id) REFERENCES deals (id)
-    );
+);

@@ -2,20 +2,10 @@ package com.trymad.lootmarket.web.dto;
 
 import java.time.LocalDateTime;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
-@AllArgsConstructor
-@Getter
-@Setter
-public class UserViewDTO {
-
-    private String id;
-    private String name;
-    private String mail;
-    private LocalDateTime registrationDate;
-    private LocalDateTime lastEnter;
-    private LocalDateTime lastUpdate;
-
-}
+public record UserViewDTO(
+        String id,
+        String name,
+        String mail,
+        LocalDateTime registrationDate,
+        LocalDateTime lastEnter,
+        LocalDateTime lastUpdate) { }
