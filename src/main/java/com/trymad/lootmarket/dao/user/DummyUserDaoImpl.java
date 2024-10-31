@@ -81,10 +81,4 @@ public class DummyUserDaoImpl implements UserDao {
         db.remove(uuid);
     }
 
-    @Override
-    public User update(User user) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
-    }
-
 }

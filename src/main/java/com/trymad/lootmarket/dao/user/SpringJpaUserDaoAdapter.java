@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import com.trymad.lootmarket.model.User;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -35,22 +34,9 @@ public class SpringJpaUserDaoAdapter implements UserDao {
     }
 
     @Override
-    public User update(User user) {
-        if (!jpaDao.existsById(user.getId())) {
-            throw new EntityNotFoundException("User with id " + user.getId() + " not found");
-        }
-        
-        return jpaDao.save(user);
-
-    }
-
-    @Override
     public void deleteById(UUID uuid) {
-        if (!jpaDao.existsById(uuid)) {
-            throw new EntityNotFoundException("User with id " + uuid + " not found");
-        }
-
         jpaDao.deleteById(uuid);
     }
+
 
 }

@@ -44,8 +44,9 @@ public class UserService {
 
     @Transactional
     public User updateUser(User user) {
+        this.getUser(user.getId());
         user.setLastUpdate(LocalDateTime.now());
-        return userDao.update(user);
+        return userDao.save(user);
     }
 
     @Transactional

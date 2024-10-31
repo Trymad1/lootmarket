@@ -29,15 +29,7 @@ public class HibernateUserDao implements UserDao {
 
     @Override
     public User save(User user) {
-        entityManager.persist(user);
-        return user;
-    }
-
-    @Override
-    public User update(User user) {
-        entityManager.getReference(User.class, user.getId()).getId(); // check on exist
-        entityManager.merge(user);
-        return user;
+        return entityManager.merge(user);
     }
 
     @Override
