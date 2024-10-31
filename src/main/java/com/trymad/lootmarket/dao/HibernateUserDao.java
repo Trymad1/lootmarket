@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Repository;
 
