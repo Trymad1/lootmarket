@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao;
+package com.trymad.lootmarket.dao.user;
 
 import java.util.UUID;
 

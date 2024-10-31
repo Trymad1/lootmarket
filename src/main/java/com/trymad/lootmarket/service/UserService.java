@@ -6,7 +6,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.trymad.lootmarket.dao.UserDao;
+import com.trymad.lootmarket.dao.user.UserDao;
 import com.trymad.lootmarket.model.User;
 
 import lombok.RequiredArgsConstructor;

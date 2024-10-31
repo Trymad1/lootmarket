@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao;
+package com.trymad.lootmarket.dao.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,6 +39,7 @@ public class SpringJpaUserDaoAdapter implements UserDao {
         if (!jpaDao.existsById(user.getId())) {
             throw new EntityNotFoundException("User with id " + user.getId() + " not found");
         }
+        
         return jpaDao.save(user);
 
     }
