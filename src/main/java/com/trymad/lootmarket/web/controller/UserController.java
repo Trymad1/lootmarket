@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trymad.lootmarket.model.User;
 import com.trymad.lootmarket.service.UserService;
-import com.trymad.lootmarket.web.dto.UserCreateDTO;
-import com.trymad.lootmarket.web.dto.UserViewDTO;
 import com.trymad.lootmarket.web.dto.mapper.UserDtoMapper;
+import com.trymad.lootmarket.web.dto.user.UserCreateDTO;
+import com.trymad.lootmarket.web.dto.user.UserViewDTO;
 
 import lombok.RequiredArgsConstructor;
 
@@ -32,24 +32,24 @@ public class UserController {
 
     @GetMapping()
     public List<UserViewDTO> getAllUsers() {
-        return userDtoMapper.toUserViewDtoList(userService.getAllUsers());
+        return userDtoMapper.toUserViewDtoList(userService.getAll());
     }
 
     @GetMapping("{id}")
     public UserViewDTO getUserById(@PathVariable UUID id) {
-        return userDtoMapper.toUserViewDto(userService.getUser(id));
+        return userDtoMapper.toUserViewDto(userService.get(id));
     }
 
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable UUID id) {
-        userService.deleteUser(id);
+        userService.delete(id);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping
     public UserViewDTO createUser(@RequestBody UserCreateDTO userCreateDTO) {
         final User user = userDtoMapper.toEntityUserCreate(userCreateDTO);
-        return userDtoMapper.toUserViewDto(userService.saveUser(user));
+        return userDtoMapper.toUserViewDto(userService.save(user));
     }
 
     @PutMapping("{id}")
@@ -58,7 +58,7 @@ public class UserController {
         final User user = userDtoMapper.toEntityUserCreate(userCreateDto);
         user.setId(id);
         userService.enrichUserData(user);
-        return userDtoMapper.toUserViewDto(userService.updateUser(user));
+        return userDtoMapper.toUserViewDto(userService.update(user));
     }
 
 }

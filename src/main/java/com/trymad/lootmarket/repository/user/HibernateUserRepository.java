@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao.user;
+package com.trymad.lootmarket.repository.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 
 @Repository
 @AllArgsConstructor
-public class HibernateUserDao implements UserDao {
+public class HibernateUserRepository implements UserRepository {
 
     private final EntityManager entityManager;
 

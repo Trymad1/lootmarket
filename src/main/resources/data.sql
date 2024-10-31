@@ -50,3 +50,16 @@ VALUES
         '2024-10-29 12:00:00', 
         '2024-10-30 12:00:00' 
     );
+
+DELETE FROM games;
+
+INSERT INTO games (id, name) VALUES (1, 'dota'),(2, 'csgo'),(3, 'wow');
+INSERT INTO services_category (id, name, game_id) VALUES
+(1, 'accounts', 1),
+(2, 'boosr', 1),
+(3, 'reputation', 1),
+(4, 'accounts', 2),
+(5, 'trainig', 2),
+(6, 'goldsell', 3),
+(7, 'raidcomplete', 3);
+

@@ -5,8 +5,9 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.trymad.lootmarket.model.User;
-import com.trymad.lootmarket.web.dto.UserCreateDTO;
-import com.trymad.lootmarket.web.dto.UserViewDTO;
+import com.trymad.lootmarket.web.dto.user.UserCreateDTO;
+import com.trymad.lootmarket.web.dto.user.UserViewDTO;
+
 import java.util.List;
 
 @Mapper(componentModel = "spring")

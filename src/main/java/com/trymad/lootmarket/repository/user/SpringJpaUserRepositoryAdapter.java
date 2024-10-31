@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao.user;
+package com.trymad.lootmarket.repository.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -14,9 +14,9 @@ import lombok.RequiredArgsConstructor;
 @Repository
 @Primary
 @RequiredArgsConstructor
-public class SpringJpaUserDaoAdapter implements UserDao {
+public class SpringJpaUserRepositoryAdapter implements UserRepository {
 
-    private final SpringJpaUserDao jpaDao;
+    private final SpringJpaUserRepository jpaDao;
 
     @Override
     public List<User> findAll() {

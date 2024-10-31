@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao.user;
+package com.trymad.lootmarket.repository.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import com.trymad.lootmarket.model.User;
 
-public interface UserDao {
+public interface UserRepository {
 
     List<User> findAll();
 

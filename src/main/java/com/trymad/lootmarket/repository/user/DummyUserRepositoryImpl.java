@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao.user;
+package com.trymad.lootmarket.repository.user;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import org.springframework.stereotype.Repository;
 import com.trymad.lootmarket.model.User;
 
 @Repository
-public class DummyUserDaoImpl implements UserDao {
+public class DummyUserRepositoryImpl implements UserRepository {
 
     Map<UUID, User> db = new HashMap<>();
 
-    DummyUserDaoImpl() {
+    DummyUserRepositoryImpl() {
         initStartDb();
     }
 

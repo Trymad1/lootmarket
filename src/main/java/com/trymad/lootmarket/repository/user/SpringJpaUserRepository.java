@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao.user;
+package com.trymad.lootmarket.repository.user;
 
 import java.util.UUID;
 
@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.trymad.lootmarket.model.User;
 
-public interface SpringJpaUserDao extends JpaRepository<User, UUID> {
+public interface SpringJpaUserRepository extends JpaRepository<User, UUID> {
     
 }

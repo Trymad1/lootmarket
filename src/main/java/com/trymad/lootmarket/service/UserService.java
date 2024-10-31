@@ -7,7 +7,7 @@ import java.util.UUID;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.trymad.lootmarket.dao.user.UserDao;
+import com.trymad.lootmarket.repository.user.UserRepository;
 import com.trymad.lootmarket.model.User;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -17,21 +17,21 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserService {
 
-    private final UserDao userDao;
+    private final UserRepository userRepository;
 
     @Transactional(readOnly = true)
-    public User getUser(UUID uuid) {
-        return userDao.findById(uuid).orElseThrow(
+    public User get(UUID uuid) {
+        return userRepository.findById(uuid).orElseThrow(
                 () -> new EntityNotFoundException("User with id " + uuid.toString() + " not found"));
     }
 
     @Transactional(readOnly = true)
-    public List<User> getAllUsers() {
-        return userDao.findAll();
+    public List<User> getAll() {
+        return userRepository.findAll();
     }
 
     @Transactional
-    public User saveUser(User user) {
+    public User save(User user) {
         final LocalDateTime now = LocalDateTime.now();
 
         user.setId(UUID.randomUUID());
@@ -39,23 +39,24 @@ public class UserService {
         user.setLastEnter(now);
         user.setLastUpdate(now);
 
-        return userDao.save(user);
+        return userRepository.save(user);
     }
 
     @Transactional
-    public User updateUser(User user) {
-        this.getUser(user.getId());
+    public User update(User user) {
+        this.get(user.getId());
         user.setLastUpdate(LocalDateTime.now());
-        return userDao.save(user);
+        return userRepository.save(user);
     }
 
     @Transactional
-    public void deleteUser(UUID uuid) {
-        userDao.deleteById(uuid);
+    public void delete(UUID uuid) {
+        userRepository.deleteById(uuid);
     }
 
+    @Transactional(readOnly = true)
     public void enrichUserData(User user) {
-        final User inBaseUser = this.getUser(user.getId());
+        final User inBaseUser = this.get(user.getId());
         user.setLastEnter(inBaseUser.getLastEnter());
         user.setLastUpdate(inBaseUser.getLastUpdate());
         user.setRegistrationDate(inBaseUser.getRegistrationDate());
