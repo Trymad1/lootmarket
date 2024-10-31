@@ -1,5 +1,6 @@
 package com.trymad.lootmarket.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -31,11 +32,19 @@ public class UserService {
 
     @Transactional
     public User saveUser(User user) {
+        final LocalDateTime now = LocalDateTime.now();
+
+        user.setId(UUID.randomUUID());
+        user.setRegistrationDate(now);
+        user.setLastEnter(now);
+        user.setLastUpdate(now);
+
         return userDao.save(user);
     }
 
     @Transactional
     public User updateUser(User user) {
+        user.setLastUpdate(LocalDateTime.now());
         return userDao.update(user);
     }
 
@@ -50,5 +59,4 @@ public class UserService {
         user.setLastUpdate(inBaseUser.getLastUpdate());
         user.setRegistrationDate(inBaseUser.getRegistrationDate());
     }
-
 }

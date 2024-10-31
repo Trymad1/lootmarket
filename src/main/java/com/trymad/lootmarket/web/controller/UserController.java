@@ -50,11 +50,6 @@ public class UserController {
     @PostMapping
     public UserViewDTO createUser(@RequestBody UserCreateDTO userCreateDTO) {
         final User user = userDtoMapper.toEntityUserCreate(userCreateDTO);
-        user.setId(UUID.randomUUID());
-        final LocalDateTime now = LocalDateTime.now();
-        user.setRegistrationDate(now);
-        user.setLastEnter(now);
-        user.setLastUpdate(now);
         return userDtoMapper.toUserViewDto(userService.saveUser(user));
     }
 
@@ -64,7 +59,6 @@ public class UserController {
         final User user = userDtoMapper.toEntityUserCreate(userCreateDto);
         user.setId(id);
         userService.enrichUserData(user);
-        user.setLastUpdate(LocalDateTime.now());
         return userDtoMapper.toUserViewDto(userService.updateUser(user));
     }
 
