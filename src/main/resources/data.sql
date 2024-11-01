@@ -52,14 +52,17 @@ VALUES
     );
 
 DELETE FROM games;
+DELETE FROM services_category;
+ALTER SEQUENCE games_id_seq RESTART WITH 1;
+ALTER SEQUENCE services_category_id_seq RESTART WITH 1;
 
-INSERT INTO games (id, name) VALUES (1, 'dota'),(2, 'csgo'),(3, 'wow');
-INSERT INTO services_category (id, name, game_id) VALUES
-(1, 'accounts', 1),
-(2, 'boosr', 1),
-(3, 'reputation', 1),
-(4, 'accounts', 2),
-(5, 'trainig', 2),
-(6, 'goldsell', 3),
-(7, 'raidcomplete', 3);
+INSERT INTO games (name) VALUES ('dota'),('csgo'),('wow');
+INSERT INTO services_category (name, game_id) VALUES
+('accounts', 1),
+('boosr', 1),
+('reputation', 1),
+('accounts', 2),
+('trainig', 2),
+('goldsell', 3),
+('raidcomplete', 3);
 

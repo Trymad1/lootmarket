@@ -1,6 +1,10 @@
 package com.trymad.lootmarket.model;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -31,8 +35,8 @@ public class Game {
     @Column(nullable = false, length = 50)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id", nullable = false)
-    private List<ServiceCategory> serviceCategories;
+    private List<ServiceCategory> serviceCategories = new ArrayList<>();
 
 }

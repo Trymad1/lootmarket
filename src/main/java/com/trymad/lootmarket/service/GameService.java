@@ -23,6 +23,11 @@ public class GameService {
                 () -> new EntityNotFoundException("Game with id " + id + " not found"));
     }
 
+    public Game get(String name) {
+        return gameRepository.findByName(name).orElseThrow(
+                () -> new EntityNotFoundException("Game with name " + name + " not found"));
+    }
+
     @Transactional(readOnly = true)
     public List<Game> getAll() {
         return gameRepository.findAll();
@@ -35,7 +40,8 @@ public class GameService {
 
     @Transactional
     public Game update(Game game) {
-        this.get(game.getId());
+        final Game oldGame = this.get(game.getId());
+        game.setServiceCategories(oldGame.getServiceCategories());
         return gameRepository.save(game);
     }
 
