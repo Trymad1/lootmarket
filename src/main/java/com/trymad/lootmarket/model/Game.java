@@ -3,9 +3,6 @@ package com.trymad.lootmarket.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
