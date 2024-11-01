@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao.user;
+package com.trymad.lootmarket.repository.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -13,7 +13,7 @@ import lombok.AllArgsConstructor;
 
 @Repository
 @AllArgsConstructor
-public class HibernateUserDao implements UserDao {
+public class HibernateUserRepository implements UserRepository {
 
     private final EntityManager entityManager;
 
@@ -29,15 +29,7 @@ public class HibernateUserDao implements UserDao {
 
     @Override
     public User save(User user) {
-        entityManager.persist(user);
-        return user;
-    }
-
-    @Override
-    public User update(User user) {
-        entityManager.getReference(User.class, user.getId()).getId(); // check on exist
-        entityManager.merge(user);
-        return user;
+        return entityManager.merge(user);
     }
 
     @Override

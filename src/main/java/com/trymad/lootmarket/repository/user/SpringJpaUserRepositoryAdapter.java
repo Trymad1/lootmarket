@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.dao.user;
+package com.trymad.lootmarket.repository.user;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,15 +9,14 @@ import org.springframework.stereotype.Repository;
 
 import com.trymad.lootmarket.model.User;
 
-import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 
 @Repository
 @Primary
 @RequiredArgsConstructor
-public class SpringJpaUserDaoAdapter implements UserDao {
+public class SpringJpaUserRepositoryAdapter implements UserRepository {
 
-    private final SpringJpaUserDao jpaDao;
+    private final SpringJpaUserRepository jpaDao;
 
     @Override
     public List<User> findAll() {
@@ -35,22 +34,9 @@ public class SpringJpaUserDaoAdapter implements UserDao {
     }
 
     @Override
-    public User update(User user) {
-        if (!jpaDao.existsById(user.getId())) {
-            throw new EntityNotFoundException("User with id " + user.getId() + " not found");
-        }
-        
-        return jpaDao.save(user);
-
-    }
-
-    @Override
     public void deleteById(UUID uuid) {
-        if (!jpaDao.existsById(uuid)) {
-            throw new EntityNotFoundException("User with id " + uuid + " not found");
-        }
-
         jpaDao.deleteById(uuid);
     }
+
 
 }
