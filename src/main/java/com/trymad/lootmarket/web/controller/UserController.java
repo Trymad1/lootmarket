@@ -10,6 +10,7 @@ import com.trymad.lootmarket.web.dto.user.UserCreateDTO;
 import com.trymad.lootmarket.web.dto.user.UserViewDTO;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.List;
 import java.util.UUID;
@@ -21,6 +22,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+
+@Slf4j
 
 @RestController
 @RequiredArgsConstructor
