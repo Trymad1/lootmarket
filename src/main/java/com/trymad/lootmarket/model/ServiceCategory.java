@@ -19,7 +19,7 @@ import lombok.ToString;
 @Entity
 @Table(name = "services_category")
 public class ServiceCategory {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
