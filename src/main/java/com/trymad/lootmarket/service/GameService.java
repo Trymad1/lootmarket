@@ -63,6 +63,7 @@ public class GameService {
     @Transactional
     public void delete(Long id) {
         log.debug("Delete game, id: {}", id);
+
         gameRepository.deleteById(id);
     }
 
@@ -75,7 +76,15 @@ public class GameService {
     @Transactional
     public Category saveCategory(Long gameId, Category category) {
         final Game game = this.get(gameId);
-        return categoryService.saveCategory(game, category);
+        return categoryService.save(game, category);
+    }
+
+    @Transactional
+    public void deleteCategory(Long gameId, Long categoryId) {
+        log.debug("Delete category, gameId: {}, categoryId: {}", gameId, categoryId);
+
+        final Game game = this.get(gameId);
+        categoryService.delete(game, categoryId);
     }
 
 }

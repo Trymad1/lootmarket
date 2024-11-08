@@ -2,6 +2,8 @@ package com.trymad.lootmarket.web.controller;
 
 import java.util.List;
 
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -37,6 +39,12 @@ public class CategoryController {
     public CategoryDTO addCategoryForGame(@PathVariable Long gameId, @RequestBody CategoryCreateDTO createDto) {
         final Category category = categoryMapper.toEntity(createDto);
         return categoryMapper.toDto(gameService.saveCategory(gameId, category));
+    }
+
+    @DeleteMapping("/{categoryId}")
+    public ResponseEntity<Void> deleteCategoryById(@PathVariable Long gameId, @PathVariable Long categoryId) {
+        gameService.deleteCategory(gameId, categoryId);
+        return ResponseEntity.ok().build();
     }
 
 }
