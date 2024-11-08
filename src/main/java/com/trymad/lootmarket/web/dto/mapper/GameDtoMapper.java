@@ -17,6 +17,7 @@ public interface GameDtoMapper {
 
     List<GameDTO> toDto(List<Game> games);
 
+    @Mapping(target = "categories", ignore = true)
     Game toEntity(GameDTO gameDto);
 
     @BeanMapping(ignoreByDefault = true)

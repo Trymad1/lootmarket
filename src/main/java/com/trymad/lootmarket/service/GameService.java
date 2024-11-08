@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trymad.lootmarket.repository.game.GameRepository;
+import com.trymad.lootmarket.model.Category;
 import com.trymad.lootmarket.model.Game;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -19,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 public class GameService {
 
     private final GameRepository gameRepository;
+    private final CategoryService categoryService;
 
     @Transactional(readOnly = true)
     public Game get(Long id) {
@@ -49,9 +51,12 @@ public class GameService {
     public Game update(Game game) {
         log.debug("Update game, id: {}", game.getId());
         log.debug("Check that game with id {} is present", game.getId());
+
         final Game oldGame = this.get(game.getId());
         game.setCategories(oldGame.getCategories());
+
         log.debug("It present, update");
+
         return gameRepository.save(game);
     }
 
@@ -59,6 +64,18 @@ public class GameService {
     public void delete(Long id) {
         log.debug("Delete game, id: {}", id);
         gameRepository.deleteById(id);
+    }
+
+    @Transactional(readOnly = true)
+    public List<Category> getGameCategories(Long gameId) {
+        final Game game = this.get(gameId);
+        return game.getCategories();
+    }
+
+    @Transactional
+    public Category saveCategory(Long gameId, Category category) {
+        final Game game = this.get(gameId);
+        return categoryService.saveCategory(game, category);
     }
 
 }
