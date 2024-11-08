@@ -5,7 +5,7 @@ import java.util.List;
 import org.mapstruct.Mapper;
 
 import com.trymad.lootmarket.model.Category;
-import com.trymad.lootmarket.web.dto.game.service.CategoryDTO;
+import com.trymad.lootmarket.web.dto.game.category.CategoryDTO;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
