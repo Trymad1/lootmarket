@@ -50,7 +50,7 @@ public class GameService {
         log.debug("Update game, id: {}", game.getId());
         log.debug("Check that game with id {} is present", game.getId());
         final Game oldGame = this.get(game.getId());
-        game.setServiceCategories(oldGame.getServiceCategories());
+        game.setCategories(oldGame.getCategories());
         log.debug("It present, update");
         return gameRepository.save(game);
     }

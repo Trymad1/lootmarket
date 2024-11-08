@@ -36,6 +36,6 @@ public class Game {
 
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
     @JoinColumn(name = "game_id", nullable = false)
-    private List<ServiceCategory> serviceCategories = new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
 
 }
