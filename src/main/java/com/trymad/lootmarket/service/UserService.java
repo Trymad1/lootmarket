@@ -25,6 +25,7 @@ public class UserService {
     @Transactional(readOnly = true)
     public User get(UUID uuid) {
         log.debug("Get user, uuid: {}", uuid);
+        
         return userRepository.findById(uuid).orElseThrow(
                 () -> new EntityNotFoundException("User with id " + uuid.toString() + " not found"));
     }
@@ -32,13 +33,14 @@ public class UserService {
     @Transactional(readOnly = true)
     public List<User> getAll() {
         log.debug("Get all users");
+
         return userRepository.findAll();
     }
 
     @Transactional
     public User save(User user) {
         log.debug("Save user, uuid: {}", user.getId());
-        log.debug("Setting uuid and time info about user");
+
         final LocalDateTime now = LocalDateTime.now();
 
         user.setId(UUID.randomUUID());
@@ -46,29 +48,29 @@ public class UserService {
         user.setLastEnter(now);
         user.setLastUpdate(now);
 
-        log.debug("Saving user");
         return userRepository.save(user);
     }
 
     @Transactional
     public User update(User user) {
         log.debug("Saving user, uuid: {}", user.getId());
-        log.debug("Check existing user");
+
         this.get(user.getId());
         user.setLastUpdate(LocalDateTime.now());
-        log.debug("Save user");
         return userRepository.save(user);
     }
 
     @Transactional
     public void delete(UUID uuid) {
         log.debug("Delete user, uuid: {}", uuid);
+
         userRepository.deleteById(uuid);
     }
 
     @Transactional(readOnly = true)
     public void enrichUserData(User user) {
         log.debug("Enrich user, uuid: {}", user.getId());
+
         final User inBaseUser = this.get(user.getId());
         user.setLastEnter(inBaseUser.getLastEnter());
         user.setLastUpdate(inBaseUser.getLastUpdate());

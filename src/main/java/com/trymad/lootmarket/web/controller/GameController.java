@@ -42,6 +42,7 @@ public class GameController {
     @PostMapping
     public GameDTO createGame(@RequestBody GameCreateDTO createDto) {
         final Game game = gameDtoMapper.toEntity(createDto);
+
         return gameDtoMapper.toDto(gameService.save(game));
     }
 
@@ -49,6 +50,7 @@ public class GameController {
     public GameDTO updateGame(@RequestBody GameCreateDTO updateDto, @PathVariable Long id) {
         final Game game = gameDtoMapper.toEntity(updateDto);
         game.setId(id);
+
         return gameDtoMapper.toDto(gameService.update(game));
 
     }
@@ -56,6 +58,7 @@ public class GameController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteGame(@PathVariable Long id) {
         gameService.delete(id);
+
         return ResponseEntity.ok().build();
     }
 

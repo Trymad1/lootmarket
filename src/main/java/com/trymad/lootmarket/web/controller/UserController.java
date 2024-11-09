@@ -46,12 +46,14 @@ public class UserController {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deleteUserById(@PathVariable UUID id) {
         userService.delete(id);
+        
         return ResponseEntity.ok().build();
     }
 
     @PostMapping
     public UserViewDTO createUser(@RequestBody UserCreateDTO userCreateDTO) {
         final User user = userDtoMapper.toEntityUserCreate(userCreateDTO);
+
         return userDtoMapper.toUserViewDto(userService.save(user));
     }
 
@@ -61,6 +63,7 @@ public class UserController {
         final User user = userDtoMapper.toEntityUserCreate(userCreateDto);
         user.setId(id);
         userService.enrichUserData(user);
+
         return userDtoMapper.toUserViewDto(userService.update(user));
     }
 
