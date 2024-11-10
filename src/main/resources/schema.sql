@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS messages (
         recipient_id UUID NOT NULL,
         message_text VARCHAR(255) NOT NULL,
         send_date TIMESTAMP NOT NULL,
-        FOREIGN KEY (sender_id) REFERENCES users (id),
-        FOREIGN KEY (recipient_id) REFERENCES users (id)
+        FOREIGN KEY (sender_id) REFERENCES users (id) ON DELETE CASCADE,
+        FOREIGN KEY (recipient_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS payment_systems (
