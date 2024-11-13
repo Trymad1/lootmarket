@@ -38,12 +38,14 @@ public class UserService {
         return new EntityNotFoundException("User with id " + uuid.toString() + " not found");
     }
 
+    @Transactional(readOnly = true)
     public boolean existsById(UUID uuid) {
         log.debug("Check user exists, uuid: {}", uuid);
 
         return userRepository.existsById(uuid);
     }
 
+    @Transactional(readOnly = true)
     public boolean existsByIdOrThrow(UUID uuid) {
         log.debug("Check user exists or throw, uuid: {}", uuid);
 

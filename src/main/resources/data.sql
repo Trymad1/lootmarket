@@ -100,3 +100,4 @@ INSERT INTO messages (sender_id, recipient_id, message_text, send_date) VALUES
 ('123e4567-e89b-12d3-a456-426614174001', '123e4567-e89b-12d3-a456-426614174000', '4zxj87olwm', '2024-10-04 05:57:02'),
 ('123e4567-e89b-12d3-a456-426614174002', '123e4567-e89b-12d3-a456-426614174001', 'm0ztwq5yo6', '2024-09-11 04:47:50');
 
+DELETE FROM services;

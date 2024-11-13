@@ -22,6 +22,11 @@ public class CategoryService {
     private final CategoryRepository categoryRepository;
 
     @Transactional(readOnly = true)
+    public boolean existsById(Long id) {
+        return categoryRepository.existsById(id);
+    }
+
+    @Transactional(readOnly = true)
     public List<Category> getAll(Long gameId) {
         return categoryRepository.getCategoriesByGameId(gameId);
     }

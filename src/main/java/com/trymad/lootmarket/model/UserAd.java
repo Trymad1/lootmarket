@@ -1,5 +1,7 @@
 package com.trymad.lootmarket.model;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,10 +11,15 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 
 @Entity
 @Table(name = "services")
-public class GameService {
+public class UserAd {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,8 +39,12 @@ public class GameService {
     @Column(name = "detailed_desc")
     String text;
 
-    Integer quanity;
+    Integer quantity;
 
     @Column(nullable = false)
     int price;
+
+    LocalDateTime createDate;
+
+    LocalDateTime updateDate;
 }

@@ -17,7 +17,7 @@ import com.trymad.lootmarket.model.Category;
 import com.trymad.lootmarket.service.GameService;
 import com.trymad.lootmarket.web.dto.game.category.CategoryCreateDTO;
 import com.trymad.lootmarket.web.dto.game.category.CategoryDTO;
-import com.trymad.lootmarket.web.dto.mapper.CategoryMapper;
+import com.trymad.lootmarket.web.dto.game.category.CategoryMapper;
 
 import lombok.RequiredArgsConstructor;
 

@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trymad.lootmarket.model.Message;
 import com.trymad.lootmarket.service.message.MessageService;
-import com.trymad.lootmarket.web.dto.mapper.MessageDtoMapper;
 import com.trymad.lootmarket.web.dto.message.MessageCreateDTO;
 import com.trymad.lootmarket.web.dto.message.MessageDTO;
+import com.trymad.lootmarket.web.dto.message.MessageDtoMapper;
 
 import lombok.RequiredArgsConstructor;
 

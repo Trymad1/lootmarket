@@ -5,8 +5,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trymad.lootmarket.model.User;
 import com.trymad.lootmarket.service.UserService;
-import com.trymad.lootmarket.web.dto.mapper.UserDtoMapper;
 import com.trymad.lootmarket.web.dto.user.UserCreateDTO;
+import com.trymad.lootmarket.web.dto.user.UserDtoMapper;
 import com.trymad.lootmarket.web.dto.user.UserViewDTO;
 
 import lombok.RequiredArgsConstructor;

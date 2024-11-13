@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.web.dto.mapper;
+package com.trymad.lootmarket.web.dto.message;
 
 import java.util.List;
 import java.util.UUID;
@@ -8,8 +8,6 @@ import org.mapstruct.Mapping;
 
 import com.trymad.lootmarket.model.Message;
 import com.trymad.lootmarket.model.User;
-import com.trymad.lootmarket.web.dto.message.MessageCreateDTO;
-import com.trymad.lootmarket.web.dto.message.MessageDTO;
 
 @Mapper(componentModel = "spring")
 public interface MessageDtoMapper {
