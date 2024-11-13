@@ -6,12 +6,14 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.trymad.lootmarket.model.Category;
+import com.trymad.lootmarket.model.Game;
 import com.trymad.lootmarket.web.dto.game.category.CategoryCreateDTO;
 import com.trymad.lootmarket.web.dto.game.category.CategoryDTO;
 
 @Mapper(componentModel = "spring")
 public interface CategoryMapper {
 
+    @Mapping(target = "gameId", source = "game")
     CategoryDTO toDto(Category category);
 
     @Mapping(target = "game", ignore = true)
@@ -25,4 +27,8 @@ public interface CategoryMapper {
     Category toEntity(CategoryDTO categoryDto);
 
     List<Category> toEntity(List<CategoryDTO> category);
+
+    default Long mapGameToGameId(Game game) {
+        return game.getId();
+    }
 }
