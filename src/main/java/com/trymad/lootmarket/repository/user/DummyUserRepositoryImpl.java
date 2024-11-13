@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.trymad.lootmarket.model.User;
 
 @Repository
-public class DummyUserRepositoryImpl implements UserRepository {
+public class DummyUserRepositoryImpl {
 
     Map<UUID, User> db = new HashMap<>();
 
@@ -60,23 +60,19 @@ public class DummyUserRepositoryImpl implements UserRepository {
                 .build());
     }
 
-    @Override
     public List<User> findAll() {
         return new ArrayList<User>(db.values());
     }
 
-    @Override
     public Optional<User> findById(UUID uuid) {
         return Optional.ofNullable(db.get(uuid));
     }
 
-    @Override
     public User save(User user) {
         db.put(user.getId(), user);
         return user;
     }
 
-    @Override
     public void deleteById(UUID uuid) {
         db.remove(uuid);
     }
