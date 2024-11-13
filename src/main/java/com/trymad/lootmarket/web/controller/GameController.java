@@ -8,7 +8,7 @@ import com.trymad.lootmarket.model.Game;
 import com.trymad.lootmarket.service.GameService;
 import com.trymad.lootmarket.web.dto.game.GameCreateDTO;
 import com.trymad.lootmarket.web.dto.game.GameDTO;
-import com.trymad.lootmarket.web.dto.mapper.GameDtoMapper;
+import com.trymad.lootmarket.web.dto.game.GameDtoMapper;
 
 import lombok.RequiredArgsConstructor;
 

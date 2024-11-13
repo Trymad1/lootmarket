@@ -46,7 +46,7 @@ public class GameService {
 
     @Transactional
     public Game save(Game game) {
-        log.debug("Save game, id: {}", game.getId());
+        log.debug("Save game");
 
         return gameRepository.save(game);
     }
