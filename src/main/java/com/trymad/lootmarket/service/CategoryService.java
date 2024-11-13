@@ -28,7 +28,7 @@ public class CategoryService {
 
     @Transactional(readOnly = true)
     public List<Category> getAll(Long gameId) {
-        return categoryRepository.getCategoriesByGameId(gameId);
+        return categoryRepository.fetchGetByGameId(gameId);
     }
 
     @Transactional(readOnly = true)

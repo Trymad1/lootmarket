@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @RequiredArgsConstructor
 
@@ -40,12 +41,12 @@ public class UserAdController {
     }
 
     @PostMapping
-    public UserAdDTO create(UserAdCreateDTO userAdCreateDTO) {
+    public UserAdDTO create(@RequestBody UserAdCreateDTO userAdCreateDTO) {
         return userAdDTOMapper.toDto(userAdService.create(userAdCreateDTO));
     }
 
     @PutMapping("{id}")
-    public UserAdDTO update(@PathVariable Long id, UserAdUpdateDTO userApUpdateDTO) {
+    public UserAdDTO update(@PathVariable Long id, @RequestBody UserAdUpdateDTO userApUpdateDTO) {
         final UserAd userAd = userAdDTOMapper.toEntity(userApUpdateDTO);
         userAd.setId(id);
 

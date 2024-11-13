@@ -25,7 +25,7 @@ public class UserAd {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "service_category_id", nullable = false)
     Category category;
 
@@ -42,7 +42,7 @@ public class UserAd {
     Integer quantity;
 
     @Column(nullable = false)
-    int price;
+    Integer price;
 
     LocalDateTime createDate;
 

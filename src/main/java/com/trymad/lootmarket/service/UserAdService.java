@@ -28,7 +28,7 @@ public class UserAdService {
 
     @Transactional(readOnly = true)
     public List<UserAd> getAll() {
-        return userAdRepository.findAll();
+        return userAdRepository.fetchFindAll();
     }
 
     @Transactional(readOnly = true)
@@ -39,10 +39,10 @@ public class UserAdService {
 
     @Transactional
     public UserAd create(UserAdCreateDTO createDto) {
-        final UserAd userAd = userAdDTOMapper.toEntity(createDto);
         final Category category = categoryService.get(createDto.categoryId());
         final User user = userService.get(createDto.authorId());
         final LocalDateTime now = LocalDateTime.now();
+        final UserAd userAd = userAdDTOMapper.toEntity(createDto);
 
         userAd.setAuthor(user);
         userAd.setCategory(category);
@@ -60,6 +60,7 @@ public class UserAdService {
         userAd.setAuthor(userAdFromDb.getAuthor());
         userAd.setCategory(userAdFromDb.getCategory());
         userAd.setUpdateDate(now);
+        userAd.setCreateDate(userAdFromDb.getCreateDate());
 
         return userAdRepository.save(userAd);
 
