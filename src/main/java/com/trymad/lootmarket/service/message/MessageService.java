@@ -6,12 +6,18 @@ import java.util.UUID;
 
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.trymad.lootmarket.model.Message;
 import com.trymad.lootmarket.repository.message.MessageRepository;
+import com.trymad.lootmarket.service.UserService;
+import com.trymad.lootmarket.web.dto.mapper.MessageDtoMapper;
+import com.trymad.lootmarket.web.dto.message.MessageCreateDTO;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequiredArgsConstructor
 
 @Service
@@ -19,12 +25,35 @@ public class MessageService {
 
     private final MessageRepository messageRepository;
     private final MessageSpecificationBuilder specificationBuilder;
+    private final UserService userService;
+    private final MessageDtoMapper messageDtoMapper;
 
+    @Transactional(readOnly = true)
     public List<Message> get(UUID sender, UUID recipient, LocalDateTime from, LocalDateTime to) {
         final Specification<Message> specification = specificationBuilder.buildSpecification(
                 sender, recipient, from, to);
 
+        if (sender != null)
+            userService.existsByIdOrThrow(sender);
+        if (recipient != null)
+            userService.existsByIdOrThrow(recipient);
+
         return messageRepository.findAll(specification);
     }
 
+    @Transactional(readOnly = true)
+    public Message get(Long id) {
+        return messageRepository.findById(id).get();
+    }
+
+    @Transactional
+    public Message save(MessageCreateDTO messageDto) {
+        final Message message = messageDtoMapper.toEntity(messageDto);
+
+        message.setRecipient(userService.get(messageDto.recipientId()));
+        message.setSender(userService.get(messageDto.senderId()));
+        message.setSendDate(LocalDateTime.now());
+
+        return messageRepository.save(message);
+    }
 }

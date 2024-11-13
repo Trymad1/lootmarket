@@ -8,25 +8,39 @@ import org.springframework.stereotype.Component;
 
 import com.trymad.lootmarket.model.Message;
 
+import jakarta.persistence.criteria.JoinType;
+
 @Component
 class MessageSpecificationBuilder {
 
     public Specification<Message> buildSpecification(
             UUID sender, UUID recipient, LocalDateTime from, LocalDateTime to) {
-        return Specification.where(senderSpec(sender))
+        return Specification.where(fetchQuery())
+                .and(senderSpec(sender))
                 .and(recipitentSpec(recipient))
                 .and(toSpec(to))
                 .and(fromSpec(from));
     }
 
+    private Specification<Message> fetchQuery() {
+        return (root, query, builder) -> {
+            query.distinct(true);
+
+            root.fetch("sender", JoinType.LEFT);
+            root.fetch("recipient", JoinType.LEFT);
+
+            return null;
+        };
+    }
+
     private Specification<Message> senderSpec(UUID sender) {
         return (root, query, builder) -> sender == null ? null
-                : builder.equal(root.get("senderId"), sender);
+                : builder.equal(root.get("sender").get("id"), sender);
     }
 
     private Specification<Message> recipitentSpec(UUID recipient) {
         return (root, query, builder) -> recipient == null ? null
-                : builder.equal(root.get("recipientId"), recipient);
+                : builder.equal(root.get("recipient").get("id"), recipient);
     }
 
     private Specification<Message> toSpec(LocalDateTime to) {

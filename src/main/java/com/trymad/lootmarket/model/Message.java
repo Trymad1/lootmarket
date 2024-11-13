@@ -1,12 +1,15 @@
 package com.trymad.lootmarket.model;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -22,13 +25,13 @@ public class Message {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @ManyToOne(cascade = CascadeType.MERGE)
-    // @JoinColumn(name = "sender_id", nullable = false)
-    private UUID senderId;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "sender_id", nullable = false)
+    private User sender;
 
-    // @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
-    // @JoinColumn(name = "recipient_id", nullable = false)
-    private UUID recipientId;
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "recipient_id", nullable = false)
+    private User recipient;
 
     private String messageText;
 
