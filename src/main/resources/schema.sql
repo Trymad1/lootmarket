@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS services (
         create_date TIMESTAMP NOT NULL,
         update_date TIMESTAMP NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (service_category_id) REFERENCES services_category (id) 
+        FOREIGN KEY (service_category_id) REFERENCES services_category (id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS messages (
