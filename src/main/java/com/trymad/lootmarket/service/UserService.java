@@ -2,7 +2,6 @@ package com.trymad.lootmarket.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.stereotype.Service;
@@ -27,20 +26,27 @@ public class UserService {
     public User get(UUID uuid) {
         log.debug("Get user, uuid: {}", uuid);
 
-        if(uuid == null) throw notFoundExceptionById(uuid);
+        if (uuid == null)
+            throw notFoundExceptionById(uuid);
         return userRepository.findById(uuid).orElseThrow(
                 () -> notFoundExceptionById(uuid));
     }
 
     private EntityNotFoundException notFoundExceptionById(UUID uuid) {
+        log.debug("Throw entityNotFoundException");
+
         return new EntityNotFoundException("User with id " + uuid.toString() + " not found");
     }
 
     public boolean existsById(UUID uuid) {
+        log.debug("Check user exists, uuid: {}", uuid);
+
         return userRepository.existsById(uuid);
     }
 
     public boolean existsByIdOrThrow(UUID uuid) {
+        log.debug("Check user exists or throw, uuid: {}", uuid);
+
         final boolean exists = uuid == null ? false : userRepository.existsById(uuid);
 
         if (!exists) {

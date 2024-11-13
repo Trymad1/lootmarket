@@ -30,6 +30,20 @@ public class MessageService {
 
     @Transactional(readOnly = true)
     public List<Message> get(UUID sender, UUID recipient, LocalDateTime from, LocalDateTime to) {
+        if (log.isDebugEnabled()) {
+            final String logSender = sender == null ? "null" : sender.toString();
+            final String logRecipient = recipient == null ? "null" : recipient.toString();
+            final String logFrom = from == null ? "null" : from.toString();
+            final String logTo = to == null ? "null" : to.toString();
+
+            log.debug(
+                    "Get messages, filters: \n" +
+                            "sender = " + logSender + "\n" +
+                            "recipient = " + logRecipient + "\n" +
+                            "from = " + logFrom + "\n" +
+                            "to = " + logTo + "\n");
+        }
+
         final Specification<Message> specification = specificationBuilder.buildSpecification(
                 sender, recipient, from, to);
 
@@ -43,11 +57,15 @@ public class MessageService {
 
     @Transactional(readOnly = true)
     public Message get(Long id) {
+        log.debug("Get message, id: {}", id);
+
         return messageRepository.findById(id).get();
     }
 
     @Transactional
     public Message save(MessageCreateDTO messageDto) {
+        log.debug("Save message");
+
         final Message message = messageDtoMapper.toEntity(messageDto);
 
         message.setRecipient(userService.get(messageDto.recipientId()));
