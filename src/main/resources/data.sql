@@ -543,22 +543,22 @@ INSERT INTO messages (sender_id, recipient_id, message_text, send_date) VALUES
 ('c178cc5a-6ad4-4fd8-a673-c92203cb6b26', 'a4bf3300-34a7-4f66-8b00-ff5e5985f2a3', 'I have some questions about your service.', '2022-10-07 00:00:00'),
 ('de0683c9-0774-4679-906a-3c99ee72aea4', '1eef54f6-86f6-4e1d-8301-0108f0d3e06e', 'Hello, how are you?', '2023-09-21 00:00:00');
 
--- INSERT INTO payment_systems (name) VALUES 
--- ('PayPal'),
--- ('Apple Pay'),
--- ('CashApp'),
--- ('Bitcoin'),
--- ('Ripple'),
--- ('Stripe'),
--- ('Revolut'),
--- ('Payoneer'),
--- ('Wise'),
--- ('Skrill'),
--- ('Zelle'),
--- ('Square'),
--- ('Litecoin'),
--- ('WebMoney'),
--- ('Venmo');
+INSERT INTO payment_systems (name) VALUES 
+('PayPal'),
+('Apple Pay'),
+('CashApp'),
+('Bitcoin'),
+('Ripple'),
+('Stripe'),
+('Revolut'),
+('Payoneer'),
+('Wise'),
+('Skrill'),
+('Zelle'),
+('Square'),
+('Litecoin'),
+('WebMoney'),
+('Venmo');
 
 -- INSERT INTO payment_details (user_id, payment_system_id, details) VALUES 
 -- ('e3440db3-d470-431f-980c-9a2f9b52f10e', 13, 'Details_5051'),

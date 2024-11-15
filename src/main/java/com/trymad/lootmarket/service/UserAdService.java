@@ -3,7 +3,7 @@ package com.trymad.lootmarket.service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trymad.lootmarket.model.Category;
@@ -18,7 +18,7 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 
-@Component
+@Service
 public class UserAdService {
 
     private final UserAdRepository userAdRepository;
