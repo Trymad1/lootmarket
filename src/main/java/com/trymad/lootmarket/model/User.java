@@ -1,11 +1,17 @@
 package com.trymad.lootmarket.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,7 +25,6 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-@Builder
 
 @Entity
 @Table(name = "users")
@@ -54,5 +59,8 @@ public class User {
 
     @Column(nullable = false)
     private LocalDateTime lastUpdate;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<UserPayment> userPayments = new ArrayList<>();
 
 }

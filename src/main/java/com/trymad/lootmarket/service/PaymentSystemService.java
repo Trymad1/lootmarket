@@ -26,6 +26,14 @@ public class PaymentSystemService {
         return psRepository.findAll();
     }
 
+    public boolean existsById(Long id) {
+        return psRepository.existsById(id);
+    }
+
+    public PaymentSystem getReference(Long id) {
+        return psRepository.getReferenceById(id);
+    }
+
     @Transactional(readOnly = true)
     public PaymentSystem get(Long id) {
         return psRepository.findById(id).orElseThrow(

@@ -14,8 +14,10 @@ public interface PaymentSystemDTOMapper {
 
     List<PaymentSystemDTO> toDto(List<PaymentSystem> paymentSystems);
 
+    @Mapping(target = "paymentSystems", ignore = true)
     PaymentSystem toEntity(PaymentSystemDTO paymentSystemDTO);
 
+    @Mapping(target = "paymentSystems", ignore = true)
     @Mapping(target = "id", ignore = true)
     PaymentSystem toEntity(PaymentSystemCreateDTO paymentSystemCreateDTO);
 
