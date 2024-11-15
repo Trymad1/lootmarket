@@ -67,7 +67,7 @@ CREATE TABLE IF NOT EXISTS payment_details (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         user_id UUID NOT NULL,
         payment_system_id INT NOT NULL,
-        details VARCHAR(20) NOT NULL,
+        details VARCHAR(24) NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
         FOREIGN KEY (payment_system_id) REFERENCES payment_systems (id)
 );

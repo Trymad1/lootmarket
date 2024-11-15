@@ -32,7 +32,11 @@ public class UserService {
                 () -> notFoundExceptionById(uuid));
     }
 
-    private EntityNotFoundException notFoundExceptionById(UUID uuid) {
+    public User getReference(UUID uuid) {
+        return userRepository.getReferenceById(uuid);
+    }
+
+    public EntityNotFoundException notFoundExceptionById(UUID uuid) {
         log.debug("Throw entityNotFoundException");
 
         return new EntityNotFoundException("User with id " + uuid.toString() + " not found");
