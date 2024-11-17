@@ -16,6 +16,6 @@ public interface CategoryRepository extends JpaRepository<Category, Long> {
     void deleteAllCategoriesByGameId(@Param("gameId") Long gameId);
 
     @Query("SELECT c FROM Category c JOIN FETCH c.game g WHERE g.id = :gameId")
-    List<Category> getCategoriesByGameId(@Param("gameId") Long gameId);
+    List<Category> fetchGetByGameId(@Param("gameId") Long gameId);
 
 }

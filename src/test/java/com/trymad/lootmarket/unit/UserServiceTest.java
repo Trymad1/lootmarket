@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -35,17 +36,17 @@ public class UserServiceTest {
 
     @BeforeEach
     public void createUser() {
-        this.user = User.builder().id(UUID.fromString("98ec4822-d6c2-463f-9347-7fcbe360a7e1"))
-                .name("Name")
-                .mail("mockmail@gmail.com")
-                .password("password")
-                .placeService(true)
-                .placeReview(true)
-                .useService(true)
-                .registrationDate(LocalDateTime.now())
-                .lastEnter(LocalDateTime.now())
-                .lastUpdate(LocalDateTime.now())
-                .build();
+        this.user = new User();
+        this.user.setId(UUID.fromString("98ec4822-d6c2-463f-9347-7fcbe360a7e1"));
+        this.user.setName("Name");
+        this.user.setMail("mockmail@gmail.com");
+        this.user.setPassword("password");
+        this.user.setPlaceService(true);
+        this.user.setPlaceReview(true);
+        this.user.setUseService(true);
+        this.user.setRegistrationDate(LocalDateTime.now());
+        this.user.setLastEnter(LocalDateTime.now());
+        this.user.setLastUpdate(LocalDateTime.now());
 
     }
 
@@ -71,10 +72,17 @@ public class UserServiceTest {
 
     @Test
     void shouldReturnListOfUsers() {
-        final List<User> userList = List.of(
-                User.builder().id(UUID.randomUUID()).build(),
-                User.builder().id(UUID.randomUUID()).build(),
-                User.builder().id(UUID.randomUUID()).build());
+        final User user1 = new User();
+        user1.setId(UUID.randomUUID());
+        final User user2 = new User();
+        user2.setId(UUID.randomUUID());
+        final User user3 = new User();
+        user3.setId(UUID.randomUUID());
+        final List<User> userList = new ArrayList<>();
+        userList.add(user3);
+        userList.add(user2);
+        userList.add(user1);
+
         when(userRepository.findAll()).thenReturn(userList);
 
         List<User> usersGet = userService.getAll();
