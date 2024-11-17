@@ -30,4 +30,7 @@ public class PaymentSystem {
     @OneToMany(mappedBy = "paymentSystem", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<UserPayment> paymentSystems = new ArrayList<>();
 
+    @OneToMany(mappedBy = "paymentSystem", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
+    private List<Deal> deals = new ArrayList<>();
+
 }
