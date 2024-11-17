@@ -75,6 +75,10 @@ public class DealService {
         dealRepository.deleteById(id);
     }
 
+    public boolean exists(Long id) {
+        return dealRepository.existsById(id);
+    }
+
     public EntityNotFoundException notFoundExceptionById(Long id) {
         return new EntityNotFoundException("Deal with id " + id + " not found");
     }

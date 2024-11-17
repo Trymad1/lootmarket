@@ -64,4 +64,7 @@ public class User {
     @OneToMany(mappedBy = "buyer", fetch = FetchType.LAZY, cascade = CascadeType.MERGE)
     private List<Deal> deals = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Review> reviews = new ArrayList<>();
+
 }
