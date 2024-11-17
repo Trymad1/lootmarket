@@ -1,12 +1,10 @@
-package com.trymad.lootmarket.web.dto.mapper;
+package com.trymad.lootmarket.web.dto.user;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 import com.trymad.lootmarket.model.User;
-import com.trymad.lootmarket.web.dto.user.UserCreateDTO;
-import com.trymad.lootmarket.web.dto.user.UserViewDTO;
 
 import java.util.List;
 

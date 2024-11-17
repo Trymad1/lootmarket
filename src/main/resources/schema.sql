@@ -1,8 +1,19 @@
+DROP TABLE IF EXISTS reviews CASCADE;
+DROP TABLE IF EXISTS deals CASCADE;
+DROP TABLE IF EXISTS messages CASCADE;
+DROP TABLE IF EXISTS payment_details CASCADE;
+DROP TABLE IF EXISTS services CASCADE;
+DROP TABLE IF EXISTS services_category CASCADE;
+DROP TABLE IF EXISTS payment_systems CASCADE;
+DROP TABLE IF EXISTS games CASCADE;
+DROP TABLE IF EXISTS deal_status CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+
 CREATE TABLE IF NOT EXISTS users (
         id UUID PRIMARY KEY,
         name VARCHAR(25) NOT NULL UNIQUE,
         mail VARCHAR(100) NOT NULL UNIQUE,
-        password VARCHAR(25) NOT NULL,
+        password VARCHAR(100) NOT NULL,
         place_service BOOL NOT NULL,
         place_review BOOL NOT NULL,
         use_service BOOL NOT NULL,
@@ -34,7 +45,7 @@ CREATE TABLE IF NOT EXISTS services (
         create_date TIMESTAMP NOT NULL,
         update_date TIMESTAMP NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (service_category_id) REFERENCES services_category (id) 
+        FOREIGN KEY (service_category_id) REFERENCES services_category (id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS messages (
@@ -49,21 +60,21 @@ CREATE TABLE IF NOT EXISTS messages (
 
 CREATE TABLE IF NOT EXISTS payment_systems (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        name VARCHAR(20) NOT NULL
+        name VARCHAR(20) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS payment_details (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
         user_id UUID NOT NULL,
         payment_system_id INT NOT NULL,
-        details VARCHAR(20) NOT NULL,
+        details VARCHAR(24) NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
         FOREIGN KEY (payment_system_id) REFERENCES payment_systems (id)
 );
 
 CREATE TABLE IF NOT EXISTS deal_status (
         id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-        name VARCHAR(20) NOT NULL
+        name VARCHAR(20) NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS deals (

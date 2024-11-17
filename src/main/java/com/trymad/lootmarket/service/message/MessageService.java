@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import com.trymad.lootmarket.model.Message;
 import com.trymad.lootmarket.repository.message.MessageRepository;
 import com.trymad.lootmarket.service.UserService;
-import com.trymad.lootmarket.web.dto.mapper.MessageDtoMapper;
 import com.trymad.lootmarket.web.dto.message.MessageCreateDTO;
+import com.trymad.lootmarket.web.dto.message.MessageDtoMapper;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
