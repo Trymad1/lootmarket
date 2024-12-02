@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequiredArgsConstructor
 
 @RestController
-@RequestMapping("users/{userId}/payments")
+@RequestMapping("api/users/{userId}/payments")
 public class UserPaymentController {
 
     private final UserPaymentDTOMapper upDTOMapper;

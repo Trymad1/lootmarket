@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 
 @RestController
-@RequestMapping("games/{gameId}/categories")
+@RequestMapping("api/games/{gameId}/categories")
 public class CategoryController {
 
     private final CategoryMapper categoryMapper;

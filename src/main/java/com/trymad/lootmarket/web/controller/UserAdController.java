@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RequiredArgsConstructor
 
 @RestController
-@RequestMapping("services")
+@RequestMapping("api/services")
 public class UserAdController {
 
     private final UserAdService userAdService;

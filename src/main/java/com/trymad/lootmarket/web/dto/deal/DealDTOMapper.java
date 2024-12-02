@@ -22,6 +22,7 @@ public interface DealDTOMapper {
     @Mapping(target = "buyer", ignore = true)
     @Mapping(target = "paymentSystem", ignore = true)
     @Mapping(target = "dealStatus", ignore = true)
+    @Mapping(target = "reviews", ignore = true)
     Deal toEntity(DealDTO dealDto);
 
     @Mapping(target = "service", ignore = true)
@@ -30,6 +31,7 @@ public interface DealDTOMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "dealStart", ignore = true)
     @Mapping(target = "dealStatus", ignore = true)
+    @Mapping(target = "reviews", ignore = true)
     Deal toEntity(DealUpdateDTO dealUpdateDTO);
 
     @Mapping(target = "service", ignore = true)
@@ -39,6 +41,7 @@ public interface DealDTOMapper {
     @Mapping(target = "dealStart", ignore = true)
     @Mapping(target = "dealEnd", ignore = true)
     @Mapping(target = "dealStatus", ignore = true)
+    @Mapping(target = "reviews", ignore = true)
     Deal toEntity(DealCreateDTO dealCreateDTO);
 
 }
