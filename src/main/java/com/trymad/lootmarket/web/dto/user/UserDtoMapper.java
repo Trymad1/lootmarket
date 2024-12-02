@@ -4,9 +4,13 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
+import com.trymad.lootmarket.model.Role;
+import com.trymad.lootmarket.model.RoleEntity;
 import com.trymad.lootmarket.model.User;
 
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Mapper(componentModel = "spring")
 public interface UserDtoMapper {
@@ -38,4 +42,10 @@ public interface UserDtoMapper {
 
     List<User> toEntityUserView(List<UserViewDTO> user);
 
+    default Set<Role> toRole(Set<RoleEntity> roleEntity) {
+        return roleEntity.stream()
+        .map(RoleEntity::getName)
+        .map(name -> Role.valueOf(name.toString()))
+        .collect(Collectors.toSet());
+    }
 }

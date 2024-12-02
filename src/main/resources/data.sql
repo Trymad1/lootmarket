@@ -20,7 +20,7 @@ ALTER SEQUENCE games_id_seq RESTART WITH 1;
 ALTER SEQUENCE deal_status_id_seq RESTART WITH 1;
 
 INSERT INTO users (id, name, mail, password, place_service, place_review, use_service, registration_date, last_enter, last_update) VALUES 
-('650116e3-27c6-441b-af25-da845348b39d', 'Michael', 'michael.barton@gmail.com', '5ca705d9b86b7ecfa7a76b385320dae8f89cf7fc9133719220edb83b22a805eb', FALSE, FALSE, FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
+('650116e3-27c6-441b-af25-da845348b39d', 'Oleg', 'Oleg@gmail.com', '$2a$10$7ehnNRnrJIWmuLBJ96lcW.1HIVOKOWvYn0mlQwSSsEWw20YZII6sq', FALSE, FALSE, FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
 ('f813afa8-7af6-48c4-9351-d8a5a610b061', 'Bruce', 'bruce.moore@hotmail.com', 'e5744e832883d71791f5ff297c179ee5af13ca51a9af10b1abcbba1c9a4969fe', FALSE, FALSE, FALSE, '2024-04-01 00:00:00', '2024-11-10 00:00:00', '2024-09-18 00:00:00'),
 ('280ab1b6-276b-4e18-af4b-9549757b6133', 'Kyle', 'kyle.tucker@hotmail.com', 'c1cffbb51ad5664c697d0ae05719a3460273cd48eec8191c1480018aee623e1d', FALSE, FALSE, FALSE, '2024-04-05 00:00:00', '2024-12-12 00:00:00', '2024-09-21 00:00:00'),
 ('fa8b63f1-5767-4de1-90bb-fcf907ac5ee3', 'Andrea', 'andrea.cantu@gmail.com', 'ab28e582860a7da21b9efb0b3adf9ca1f3e2f6b1d892a3b2e69fe79600e41e84', FALSE, FALSE, FALSE, '2023-09-11 00:00:00', '2024-03-29 00:00:00', '2024-02-14 00:00:00'),
@@ -843,4 +843,5 @@ INSERT INTO user_roles (user_id, role_id) VALUES
 ('650116e3-27c6-441b-af25-da845348b39d', 2),
 ('650116e3-27c6-441b-af25-da845348b39d', 3), 
 ('f813afa8-7af6-48c4-9351-d8a5a610b061', 3), 
-('72cd3435-9730-4872-9699-d1b549ac4bc3', 3);
+('72cd3435-9730-4872-9699-d1b549ac4bc3', 3),
+('650116e3-27c6-441b-af25-da845348b39d', 1);
