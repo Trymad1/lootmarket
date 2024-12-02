@@ -836,3 +836,11 @@ INSERT INTO reviews (user_id, deal_id, grade, comment, DATE) VALUES
 ('bea82191-5609-48aa-9db3-ac891e0449c9', 53, 5, 'Random review comment for deal 53 and user bea82191-5609-48aa-9db3-ac891e0449c9', '2022-10-25 00:00:00'),
 ('fa8b63f1-5767-4de1-90bb-fcf907ac5ee3', 26, 4, 'Random review comment for deal 26 and user fa8b63f1-5767-4de1-90bb-fcf907ac5ee3', '2023-07-16 00:00:00'),
 ('bea82191-5609-48aa-9db3-ac891e0449c9', 93, 4, 'Random review comment for deal 93 and user bea82191-5609-48aa-9db3-ac891e0449c9', '2024-05-24 00:00:00');
+
+INSERT INTO roles (name) VALUES ('ROLE_ADMIN'), ('ROLE_MODERATOR'), ('ROLE_USER');
+INSERT INTO user_roles (user_id, role_id) VALUES 
+('650116e3-27c6-441b-af25-da845348b39d', 1), 
+('650116e3-27c6-441b-af25-da845348b39d', 2),
+('650116e3-27c6-441b-af25-da845348b39d', 3), 
+('f813afa8-7af6-48c4-9351-d8a5a610b061', 3), 
+('72cd3435-9730-4872-9699-d1b549ac4bc3', 3);
