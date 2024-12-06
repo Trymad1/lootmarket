@@ -7,8 +7,10 @@ import com.trymad.lootmarket.model.User;
 import com.trymad.lootmarket.service.UserService;
 import com.trymad.lootmarket.web.dto.user.UserCreateDTO;
 import com.trymad.lootmarket.web.dto.user.UserDtoMapper;
+import com.trymad.lootmarket.web.dto.user.UserStatsDTO;
 import com.trymad.lootmarket.web.dto.user.UserUpdateDTO;
 import com.trymad.lootmarket.web.dto.user.UserViewDTO;
+import com.trymad.lootmarket.web.dto.user.UserWithStats;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -68,4 +70,8 @@ public class UserController {
         return userDtoMapper.toUserViewDto(userService.update(user));
     }
 
+    @GetMapping("{id}/stats")
+    public UserStatsDTO getStats(@PathVariable UUID userId) {
+        return userService.getUserWithStats(userId);
+    }
 }

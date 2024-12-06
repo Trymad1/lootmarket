@@ -36,6 +36,7 @@ public interface UserDtoMapper {
     User toEntityUserCreate(UserCreateDTO dto);
 
     @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "banned", source = "banned")
     @Mapping(target = "id", source = "id")
     @Mapping(target = "name", source = "name")
     @Mapping(target = "mail", source = "mail")

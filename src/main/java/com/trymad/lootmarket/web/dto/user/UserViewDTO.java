@@ -11,6 +11,7 @@ public record UserViewDTO(
                 String mail,
                 LocalDateTime registrationDate,
                 LocalDateTime lastEnter,
+                boolean banned,
                 Set<Role> roles,
                 LocalDateTime lastUpdate) {
 }

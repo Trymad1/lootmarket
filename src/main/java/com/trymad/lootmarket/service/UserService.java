@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.trymad.lootmarket.repository.user.UserRepository;
 import com.trymad.lootmarket.repository.user.role.RoleService;
+import com.trymad.lootmarket.web.dto.user.UserStatsDTO;
+import com.trymad.lootmarket.web.dto.user.UserWithStats;
 import com.trymad.lootmarket.model.MyUserDetails;
 import com.trymad.lootmarket.model.User;
 
@@ -111,6 +113,13 @@ public class UserService implements UserDetailsService {
         log.debug("Delete user, uuid: {}", uuid);
 
         userRepository.deleteById(uuid);
+    }
+
+    @Transactional
+    public UserStatsDTO getUserWithStats(UUID userId) {
+        existsByIdOrThrow(userId);
+        return userRepository.getUserStats(userId);
+
     }
 
     @Transactional(readOnly = true)
