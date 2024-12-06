@@ -17,6 +17,12 @@ public interface UserDtoMapper {
 
     UserViewDTO toUserViewDto(User user);
 
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "name", source = "name")
+    @Mapping(target = "mail", source = "mail")
+    @Mapping(target = "banned", source = "isBanned")
+    User toEntity(UserUpdateDTO userUpdateDTO);
+
     List<UserViewDTO> toUserViewDtoList(List<User> user);
 
     UserCreateDTO toUserCreateDto(User user);
@@ -44,8 +50,8 @@ public interface UserDtoMapper {
 
     default Set<Role> toRole(Set<RoleEntity> roleEntity) {
         return roleEntity.stream()
-        .map(RoleEntity::getName)
-        .map(name -> Role.valueOf(name.toString()))
-        .collect(Collectors.toSet());
+                .map(RoleEntity::getName)
+                .map(name -> Role.valueOf(name.toString()))
+                .collect(Collectors.toSet());
     }
 }

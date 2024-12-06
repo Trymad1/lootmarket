@@ -41,9 +41,6 @@ public class UserServiceTest {
         this.user.setName("Name");
         this.user.setMail("mockmail@gmail.com");
         this.user.setPassword("password");
-        this.user.setPlaceService(true);
-        this.user.setPlaceReview(true);
-        this.user.setUseService(true);
         this.user.setRegistrationDate(LocalDateTime.now());
         this.user.setLastEnter(LocalDateTime.now());
         this.user.setLastUpdate(LocalDateTime.now());

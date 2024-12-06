@@ -46,13 +46,7 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private boolean placeService;
-
-    @Column(nullable = false)
-    private boolean placeReview;
-
-    @Column(nullable = false)
-    private boolean useService;
+    private boolean banned;
 
     @Column(nullable = false)
     private LocalDateTime registrationDate;
@@ -73,8 +67,6 @@ public class User {
     private List<Review> reviews = new ArrayList<>();
 
     @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "user_roles", 
-               joinColumns = @JoinColumn(name = "user_id"), 
-               inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<RoleEntity> roles = new HashSet<>();
 }

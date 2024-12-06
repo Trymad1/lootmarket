@@ -7,6 +7,7 @@ import com.trymad.lootmarket.model.User;
 import com.trymad.lootmarket.service.UserService;
 import com.trymad.lootmarket.web.dto.user.UserCreateDTO;
 import com.trymad.lootmarket.web.dto.user.UserDtoMapper;
+import com.trymad.lootmarket.web.dto.user.UserUpdateDTO;
 import com.trymad.lootmarket.web.dto.user.UserViewDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -51,8 +52,8 @@ public class UserController {
     }
 
     @PostMapping
-    public UserViewDTO createUser(@RequestBody UserCreateDTO userCreateDTO) {
-        final User user = userDtoMapper.toEntityUserCreate(userCreateDTO);
+    public UserViewDTO createUser(@RequestBody UserUpdateDTO userCreateDTO) {
+        final User user = userDtoMapper.toEntity(userCreateDTO);
 
         return userDtoMapper.toUserViewDto(userService.save(user));
     }
