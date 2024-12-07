@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.web.dto.user;
+package com.trymad.lootmarket.web.dto.userDto;
 
 import java.time.LocalDateTime;
 import java.util.Set;

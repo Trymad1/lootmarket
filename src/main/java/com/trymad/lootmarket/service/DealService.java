@@ -24,7 +24,7 @@ import lombok.RequiredArgsConstructor;
 public class DealService {
 
     private final UserService userService;
-    private final CategoryService categoryService;
+    private final UserAdService userAdService;
     private final PaymentSystemService paymentSystemService;
 
     private final DealRepository dealRepository;
@@ -54,7 +54,7 @@ public class DealService {
         deal.setDealStart(LocalDateTime.now());
         deal.setBuyer(userService.get(createDTO.buyerId()));
         deal.setPaymentSystem(paymentSystemService.get(createDTO.paymentSystemId()));
-        deal.setService(categoryService.get(createDTO.serviceId()));
+        deal.setService(userAdService.getById(createDTO.serviceId()));
         deal.setDealStatus(this.getDealStatus(createDTO.dealStatus()));
 
         return dealRepository.save(deal);

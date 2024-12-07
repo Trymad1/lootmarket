@@ -39,6 +39,4 @@ public class Category {
     @JoinColumn(name = "game_id", nullable = false)
     private Game game;
 
-    @OneToMany(mappedBy = "service", cascade = CascadeType.MERGE)
-    private List<Deal> deals = new ArrayList<>();
 }

@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import com.trymad.lootmarket.service.UserService;
-import com.trymad.lootmarket.web.dto.user.LoginDTO;
+import com.trymad.lootmarket.web.dto.userDto.LoginDTO;
 
 import lombok.RequiredArgsConstructor;
 

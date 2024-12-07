@@ -5,12 +5,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.trymad.lootmarket.model.User;
 import com.trymad.lootmarket.service.UserService;
-import com.trymad.lootmarket.web.dto.user.UserCreateDTO;
-import com.trymad.lootmarket.web.dto.user.UserDtoMapper;
-import com.trymad.lootmarket.web.dto.user.UserStatsDTO;
-import com.trymad.lootmarket.web.dto.user.UserUpdateDTO;
-import com.trymad.lootmarket.web.dto.user.UserViewDTO;
-import com.trymad.lootmarket.web.dto.user.UserWithStats;
+import com.trymad.lootmarket.web.dto.userDto.UserCreateDTO;
+import com.trymad.lootmarket.web.dto.userDto.UserDtoMapper;
+import com.trymad.lootmarket.web.dto.userDto.UserStatsDTO;
+import com.trymad.lootmarket.web.dto.userDto.UserUpdateDTO;
+import com.trymad.lootmarket.web.dto.userDto.UserViewDTO;
+import com.trymad.lootmarket.web.dto.userDto.UserWithStats;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -71,7 +71,7 @@ public class UserController {
     }
 
     @GetMapping("{id}/stats")
-    public UserStatsDTO getStats(@PathVariable UUID userId) {
-        return userService.getUserWithStats(userId);
+    public UserStatsDTO getStats(@PathVariable UUID id) {
+        return userService.getStats(id);
     }
 }

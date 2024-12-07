@@ -15,13 +15,11 @@ public interface CategoryMapper {
 
     @Mapping(target = "game", ignore = true)
     @Mapping(target = "id", ignore = true)
-    @Mapping(target = "deals", ignore = true)
     Category toEntity(CategoryCreateDTO createDto);
 
     List<CategoryDTO> toDto(List<Category> category);
 
     @Mapping(target = "game", ignore = true)
-    @Mapping(target = "deals", ignore = true)
     Category toEntity(CategoryDTO categoryDto);
 
     List<Category> toEntity(List<CategoryDTO> category);

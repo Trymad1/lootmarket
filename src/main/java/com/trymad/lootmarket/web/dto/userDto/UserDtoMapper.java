@@ -1,4 +1,4 @@
-package com.trymad.lootmarket.web.dto.user;
+package com.trymad.lootmarket.web.dto.userDto;
 
 import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;

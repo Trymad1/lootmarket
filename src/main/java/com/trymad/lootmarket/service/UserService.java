@@ -12,8 +12,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.trymad.lootmarket.repository.user.UserRepository;
 import com.trymad.lootmarket.repository.user.role.RoleService;
-import com.trymad.lootmarket.web.dto.user.UserStatsDTO;
-import com.trymad.lootmarket.web.dto.user.UserWithStats;
+import com.trymad.lootmarket.web.dto.paymentSystem.PaymentSystemDTOMapper;
+import com.trymad.lootmarket.web.dto.userDto.UserStatsDTO;
+import com.trymad.lootmarket.web.dto.userDto.UserWithStats;
 import com.trymad.lootmarket.model.MyUserDetails;
 import com.trymad.lootmarket.model.User;
 
@@ -29,6 +30,7 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
     private final RoleService roleService;
+    private final PaymentSystemDTOMapper paymentSystemMapper;
 
     @Transactional(readOnly = true)
     public User get(UUID uuid) {
@@ -116,10 +118,21 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public UserStatsDTO getUserWithStats(UUID userId) {
+    public UserStatsDTO getStats(UUID userId) {
         existsByIdOrThrow(userId);
-        return userRepository.getUserStats(userId);
 
+        return UserStatsDTO.builder()
+
+        .servicesPosted(userRepository.countTotalServicesPosted(userId))
+        .servicesSold(userRepository.countTotalServicesSold(userId))
+        .servicesPurchased(userRepository.countTotalServicesPurchased(userId))
+        .paymentSystems(
+            paymentSystemMapper.toDto(userRepository.findPaymentSystems(userId)))
+        .activityDates(userRepository.findActivityDates(userId))
+        .serviceSaleDates(userRepository.findServiceSaleDates(userId))
+        .servicePurchaseDates(userRepository.findServicePurchaseDates(userId))
+
+        .build();
     }
 
     @Transactional(readOnly = true)

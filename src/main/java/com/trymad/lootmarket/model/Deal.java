@@ -31,7 +31,7 @@ public class Deal {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "service_id")
-    private Category service;
+    private UserAd service;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_buyer_id")

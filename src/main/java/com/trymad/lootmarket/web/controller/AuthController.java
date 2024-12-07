@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trymad.lootmarket.service.security.AuthenticationService;
-import com.trymad.lootmarket.web.dto.user.JwtResponse;
-import com.trymad.lootmarket.web.dto.user.LoginDTO;
+import com.trymad.lootmarket.web.dto.userDto.JwtResponse;
+import com.trymad.lootmarket.web.dto.userDto.LoginDTO;
 
 import lombok.RequiredArgsConstructor;
 
