@@ -14,8 +14,9 @@ import com.trymad.lootmarket.repository.user.UserRepository;
 import com.trymad.lootmarket.repository.user.role.RoleService;
 import com.trymad.lootmarket.web.dto.paymentSystem.PaymentSystemDTOMapper;
 import com.trymad.lootmarket.web.dto.userDto.UserStatsDTO;
-import com.trymad.lootmarket.web.dto.userDto.UserWithStats;
 import com.trymad.lootmarket.model.MyUserDetails;
+import com.trymad.lootmarket.model.Role;
+import com.trymad.lootmarket.model.RoleEntity;
 import com.trymad.lootmarket.model.User;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -118,6 +119,14 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
+    public void setRole(Role role, UUID userId) {
+        RoleEntity roleEntity = roleService.get(role);
+        User user = this.get(userId);
+        user.getRoles().clear();
+        user.getRoles().add(roleEntity);
+    }
+
+    @Transactional
     public UserStatsDTO getStats(UUID userId) {
         existsByIdOrThrow(userId);
 
@@ -140,8 +149,10 @@ public class UserService implements UserDetailsService {
         log.debug("Enrich user, uuid: {}", user.getId());
 
         final User inBaseUser = this.get(user.getId());
+        user.setPassword(inBaseUser.getPassword());
         user.setLastEnter(inBaseUser.getLastEnter());
         user.setLastUpdate(inBaseUser.getLastUpdate());
         user.setRegistrationDate(inBaseUser.getRegistrationDate());
+        user.setRoles(inBaseUser.getRoles());
     }
 }

@@ -11,7 +11,7 @@ import com.trymad.lootmarket.model.UserAd;
 
 public interface UserAdRepository extends JpaRepository<UserAd, Long> {
 
-    @Query("SELECT ua FROM UserAd ua JOIN FETCH ua.author JOIN FETCH ua.category")
+    @Query("SELECT ua FROM UserAd ua JOIN FETCH ua.author JOIN FETCH ua.author.roles JOIN FETCH ua.category")
     List<UserAd> fetchFindAll();
 
     @Query("SELECT ua FROM UserAd ua JOIN FETCH ua.author JOIN FETCH ua.category WHERE ua.id = :id")

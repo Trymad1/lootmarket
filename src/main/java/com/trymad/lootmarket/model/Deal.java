@@ -51,8 +51,5 @@ public class Deal {
     private LocalDateTime dealStart;
 
     private LocalDateTime dealEnd;
-
-    @OneToMany(mappedBy = "deal", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private List<Review> reviews = new ArrayList<>();
-
+    
 }

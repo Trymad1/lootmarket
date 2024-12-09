@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.trymad.lootmarket.model.UserAd;
+import com.trymad.lootmarket.service.ReviewService;
 import com.trymad.lootmarket.service.UserAdService;
 import com.trymad.lootmarket.web.dto.userAd.UserAdCreateDTO;
 import com.trymad.lootmarket.web.dto.userAd.UserAdDTO;
@@ -32,7 +33,9 @@ public class UserAdController {
 
     @GetMapping
     public List<UserAdDTO> getAll() {
-        return userAdDTOMapper.toDto(userAdService.getAll());
+        List<UserAdDTO> dto = userAdDTOMapper.toDto(userAdService.getAll());
+
+        return userAdService.enrich(dto);
     }
 
     @GetMapping("{id}")

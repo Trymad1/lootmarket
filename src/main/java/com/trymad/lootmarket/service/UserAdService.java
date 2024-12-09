@@ -2,6 +2,7 @@ package com.trymad.lootmarket.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +12,7 @@ import com.trymad.lootmarket.model.User;
 import com.trymad.lootmarket.model.UserAd;
 import com.trymad.lootmarket.repository.userAd.UserAdRepository;
 import com.trymad.lootmarket.web.dto.userAd.UserAdCreateDTO;
+import com.trymad.lootmarket.web.dto.userAd.UserAdDTO;
 import com.trymad.lootmarket.web.dto.userAd.UserAdDTOMapper;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -25,6 +27,8 @@ public class UserAdService {
     private final UserService userService;
     private final CategoryService categoryService;
     private final UserAdDTOMapper userAdDTOMapper;
+    private final DealService dealService;
+    private final ReviewService reviewService;
 
     @Transactional(readOnly = true)
     public List<UserAd> getAll() {
@@ -50,6 +54,19 @@ public class UserAdService {
         userAd.setUpdateDate(now);
 
         return userAdRepository.save(userAd);
+    }
+
+    @Transactional(readOnly = true)
+    public List<UserAdDTO> enrich(List<UserAdDTO> dto) {
+        dto.forEach(dt -> {
+            Double avg = reviewService.getAvgGradeByServiceId(dt.getId());
+            // Long count = reviewService.getSumReviewsByServiceId(dt.getId());
+            avg = avg == null ? 0 : avg;
+            // count = count == null ? 0 : count;
+            dt.setAvgGrade(avg);
+        });
+
+        return dto;
     }
 
     @Transactional

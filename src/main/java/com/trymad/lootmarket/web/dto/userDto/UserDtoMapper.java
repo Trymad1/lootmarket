@@ -20,7 +20,7 @@ public interface UserDtoMapper {
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "name", source = "name")
     @Mapping(target = "mail", source = "mail")
-    @Mapping(target = "banned", source = "isBanned")
+    @Mapping(target = "banned", source = "banned")
     User toEntity(UserUpdateDTO userUpdateDTO);
 
     List<UserViewDTO> toUserViewDtoList(List<User> user);
@@ -33,7 +33,7 @@ public interface UserDtoMapper {
     @Mapping(target = "name", source = "name")
     @Mapping(target = "mail", source = "mail")
     @Mapping(target = "password", source = "password")
-    User toEntityUserCreate(UserCreateDTO dto);
+    User toEntity(UserCreateDTO dto);
 
     @BeanMapping(ignoreByDefault = true)
     @Mapping(target = "banned", source = "banned")

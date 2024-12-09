@@ -6,7 +6,7 @@ import java.util.UUID;
 
 import com.trymad.lootmarket.model.DealStatus;
 
-public record DealDTO(Long id, Long serviceId, UUID buyerId, Long paymentSystemId, DealStatus dealStatus,
+public record DealDTO(Long id, Long serviceId, UUID buyerId, String buyerName, Long paymentSystemId, DealStatus dealStatus,
         Integer buyedQuantity, LocalDateTime dealStart, LocalDate dealEnd) {
 
 }

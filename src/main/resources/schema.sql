@@ -108,7 +108,7 @@ CREATE TABLE IF NOT EXISTS reviews (
         comment VARCHAR(255) NOT NULL,
         DATE TIMESTAMP NOT NULL,
         FOREIGN KEY (user_id) REFERENCES users (id),
-        FOREIGN KEY (deal_id) REFERENCES deals (id)
+        FOREIGN KEY (deal_id) REFERENCES services (id)
 );
 
 CREATE TABLE IF NOT EXISTS roles (

@@ -1,5 +1,5 @@
 package com.trymad.lootmarket.model;
 
 public enum DealStatus {
-    COMPLETE, CANCELLED, IN_PROGRESS
+    COMPLETE, CANCELLED, IN_PROGRESS;
 }

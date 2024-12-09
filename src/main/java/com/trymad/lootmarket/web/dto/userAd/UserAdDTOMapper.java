@@ -11,7 +11,9 @@ import com.trymad.lootmarket.model.UserAd;
 public interface UserAdDTOMapper {
 
     @Mapping(target = "categoryId", source = "category.id")
+    @Mapping(target = "categoryName", source = "category.name")
     @Mapping(target = "authorId", source = "author.id")
+    @Mapping(target = "authorName", source = "author.name")
     UserAdDTO toDto(UserAd userAd);
 
     @Mapping(target = "category", ignore = true)
