@@ -16,7 +16,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
+import com.trymad.lootmarket.model.MyUserDetails;
 import com.trymad.lootmarket.model.Role;
+import com.trymad.lootmarket.model.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -34,17 +36,20 @@ public class JwtTokenProvider {
     }
 
     public String generateToken(UserDetails userDetails) {
+        MyUserDetails user = (MyUserDetails) userDetails;
         final Map<String, Object> claims = new HashMap<>();
-        final List<String> roles = userDetails.getAuthorities().stream()
+        final List<String> roles = user.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
         claims.put("roles", roles);
+        claims.put("name", user.getName());
+        claims.put("id", user.getId());
 
         final Date now = new Date();
         final Date expiredDate = new Date(now.getTime() + expiration.toMillis());
         return Jwts.builder()
                 .claims(claims)
-                .subject(userDetails.getUsername())
+                .subject(user.getUsername())
                 .issuedAt(now)
                 .expiration(expiredDate)
                 .signWith(secret)

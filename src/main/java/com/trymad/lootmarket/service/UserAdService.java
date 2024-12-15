@@ -56,18 +56,6 @@ public class UserAdService {
         return userAdRepository.save(userAd);
     }
 
-    @Transactional(readOnly = true)
-    public List<UserAdDTO> enrich(List<UserAdDTO> dto) {
-        dto.forEach(dt -> {
-            Double avg = reviewService.getAvgGradeByServiceId(dt.getId());
-            // Long count = reviewService.getSumReviewsByServiceId(dt.getId());
-            avg = avg == null ? 0 : avg;
-            // count = count == null ? 0 : count;
-            dt.setAvgGrade(avg);
-        });
-
-        return dto;
-    }
 
     @Transactional
     public UserAd update(UserAd userAd) {

@@ -10,6 +10,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import com.trymad.lootmarket.model.User;
 import com.trymad.lootmarket.service.UserService;
 import com.trymad.lootmarket.web.dto.userDto.LoginDTO;
 

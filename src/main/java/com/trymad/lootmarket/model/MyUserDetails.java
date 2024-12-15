@@ -1,6 +1,7 @@
 package com.trymad.lootmarket.model;
 
 import java.util.Collection;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -30,6 +31,14 @@ public class MyUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return user.getMail();
+    }
+
+    public UUID getId() {
+        return user.getId();
+    }
+
+    public String getName() {
+        return user.getName();
     }
 
 }

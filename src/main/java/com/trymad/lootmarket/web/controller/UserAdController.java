@@ -33,9 +33,7 @@ public class UserAdController {
 
     @GetMapping
     public List<UserAdDTO> getAll() {
-        List<UserAdDTO> dto = userAdDTOMapper.toDto(userAdService.getAll());
-
-        return userAdService.enrich(dto);
+        return userAdDTOMapper.toDto(userAdService.getAll());
     }
 
     @GetMapping("{id}")

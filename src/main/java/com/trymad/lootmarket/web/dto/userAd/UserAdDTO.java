@@ -28,7 +28,6 @@ public class UserAdDTO {
         String text;
         Integer quantity;
         int price;
-        double avgGrade;
         LocalDateTime createDate;
         LocalDateTime updateDate;
 }
