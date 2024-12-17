@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS deals (
         quantity_purchased INT,
         deal_start TIMESTAMP NOT NULL,
         deal_end TIMESTAMP,
-        FOREIGN KEY (service_id) REFERENCES services (id),
+        FOREIGN KEY (service_id) REFERENCES services (id) ON DELETE CASCADE,
         FOREIGN KEY (user_buyer_id) REFERENCES users (id),
         FOREIGN KEY (payment_system_id) REFERENCES payment_systems (id),
         FOREIGN KEY (deal_status_id) REFERENCES deal_status (id)

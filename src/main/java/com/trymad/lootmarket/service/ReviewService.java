@@ -35,6 +35,10 @@ public class ReviewService {
                 () -> new EntityNotFoundException("Review with id " + id + " not found"));
     }
 
+    public List<Review> getByServiceId(Long id) {
+        return reviewRepository.fetchFindAllByDealId(id);
+    }
+
     @Transactional(readOnly = true)
     public Double getAvgGradeByServiceId(Long id) {
         return reviewRepository.findAverageGradeByDealId(id);

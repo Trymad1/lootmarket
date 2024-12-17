@@ -15,6 +15,7 @@ public interface DealDTOMapper {
     @Mapping(target = "paymentSystemId", source = "paymentSystem.id")
     @Mapping(target = "dealStatus", source = "dealStatus.name")
     @Mapping(target = "buyerName", source = "buyer.name")
+    @Mapping(target = "paymentSystemName", source = "paymentSystem.name")
     DealDTO toDto(Deal deal);
 
     List<DealDTO> toDto(List<Deal> deals);

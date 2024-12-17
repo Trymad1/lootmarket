@@ -30,6 +30,11 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewDTOMapper reviewDTOMapper;
 
+    @GetMapping("{id}") // TODO
+    public List<ReviewDTO> getAllByServiceId(@PathVariable Long id) {
+        return reviewDTOMapper.toDto(reviewService.getByServiceId(id));
+    }
+
     @PostMapping
     public ReviewDTO create(@RequestBody ReviewCreateDTO reviewCreateDTO) {
         return reviewDTOMapper.toDto(reviewService.create(reviewCreateDTO));
