@@ -24,10 +24,10 @@ public class StatService {
     @Transactional(readOnly = true)
     public SiteStatsDTO getStatsByDate(LocalDateTime from, LocalDateTime to) {
         if (from == null) {
-            from = LocalDateTime.MIN;
+            from = LocalDateTime.of(2000, 1, 1, 1, 1, 1);
         }
         if(to == null) {
-            to = LocalDateTime.MAX;
+            to = LocalDateTime.now();
         }
         
         List<LocalDateTime> registrationTimes = userService.getRegistrationDatesByDate(from, to);

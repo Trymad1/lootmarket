@@ -26,6 +26,7 @@ public interface DealRepository extends JpaRepository<Deal, Long> {
         JOIN FETCH service 
         JOIN FETCH service.category
         JOIN FETCH service.author
+        JOIN FETCH service.author.roles
         JOIN FETCH buyer 
         JOIN FETCH buyer.roles 
         JOIN FETCH paymentSystem 

@@ -21,7 +21,7 @@ public class StatController {
     private final StatService statService;
 
     @GetMapping
-    public SiteStatsDTO getStats(@RequestParam LocalDateTime from, @RequestParam LocalDateTime to) {
+    public SiteStatsDTO getStats(@RequestParam(required = false) LocalDateTime from, @RequestParam(required = false) LocalDateTime to) {
         return statService.getStatsByDate(from, to);
     }
 }
