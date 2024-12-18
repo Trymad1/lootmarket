@@ -3,6 +3,7 @@ package com.trymad.lootmarket.config;
 import java.util.Arrays;
 
 import org.apache.catalina.filters.RequestFilter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
@@ -80,9 +81,9 @@ public class SecurityConfig {
     }
 
     @Bean
-    CorsConfigurationSource corsConfigurationSource() {
+    CorsConfigurationSource corsConfigurationSource(@Value("${cors.frontendDomen}") String frontendDomen) {
         CorsConfiguration corsConfig = new CorsConfiguration();
-        corsConfig.setAllowedOrigins(Arrays.asList("http://localhost:5500"));
+        corsConfig.setAllowedOrigins(Arrays.asList(frontendDomen));
         corsConfig.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
         corsConfig.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
         corsConfig.setAllowCredentials(true);
