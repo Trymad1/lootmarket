@@ -1,5 +1,6 @@
 package com.trymad.lootmarket.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
@@ -154,5 +155,13 @@ public class UserService implements UserDetailsService {
         user.setLastUpdate(inBaseUser.getLastUpdate());
         user.setRegistrationDate(inBaseUser.getRegistrationDate());
         user.setRoles(inBaseUser.getRoles());
+    }
+
+    public List<LocalDateTime> getActivitiesByDate(LocalDateTime from, LocalDateTime to) {
+        return userRepository.findActivityDatesByDate(from, to);
+    }
+
+    public List<LocalDateTime> getRegistrationDatesByDate(LocalDateTime from, LocalDateTime to) {
+        return userRepository.findRegistrationTimesByDate(from, to);
     }
 }

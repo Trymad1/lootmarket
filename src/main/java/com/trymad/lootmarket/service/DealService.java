@@ -78,6 +78,11 @@ public class DealService {
         dealRepository.deleteById(id);
     }
 
+    @Transactional
+    public List<Deal> getByDate(LocalDateTime from, LocalDateTime to) {
+        return dealRepository.fetchFindByDate(from, to);
+    }
+
     public boolean exists(Long id) {
         return dealRepository.existsById(id);
     }

@@ -46,4 +46,9 @@ public interface UserRepository extends JpaRepository<User, UUID> {
     @Query("SELECT DISTINCT up.paymentSystem FROM UserPayment up JOIN up.paymentSystem WHERE up.user.id = :userId")
     List<PaymentSystem> findPaymentSystems(@Param("userId") UUID userId);
 
+    @Query("SELECT ua.time FROM UserActivity ua WHERE ua.time BETWEEN :from AND :to")
+    List<LocalDateTime> findActivityDatesByDate(@Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
+
+    @Query("SELECT u.registrationDate FROM User u WHERE u.registrationDate BETWEEN :from AND :to")
+    List<LocalDateTime> findRegistrationTimesByDate(@Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
 }
