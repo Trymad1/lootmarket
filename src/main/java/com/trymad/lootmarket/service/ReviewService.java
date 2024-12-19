@@ -21,7 +21,6 @@ import lombok.RequiredArgsConstructor;
 public class ReviewService {
 
     private final ReviewRepository reviewRepository;
-    private final DealService dealService;
     private final ReviewDTOMapper reviewDTOMapper;
     private final UserService userService;
 
@@ -36,19 +35,24 @@ public class ReviewService {
                 () -> new EntityNotFoundException("Review with id " + id + " not found"));
     }
 
-    @Transactional(readOnly = true)
-    public List<Review> getAllByDealId(Long dealId) {
-        if (!dealService.exists(dealId)) {
-            throw new EntityNotFoundException("Reviews for deal id " + dealId + " not found");
-        }
+    public List<Review> getByServiceId(Long id) {
+        return reviewRepository.fetchFindAllByDealId(id);
+    }
 
-        return reviewRepository.fetchFindAllByDealId(dealId);
+    @Transactional(readOnly = true)
+    public Double getAvgGradeByServiceId(Long id) {
+        return reviewRepository.findAverageGradeByDealId(id);
+    }
+
+    @Transactional(readOnly = true)
+    public Long getSumReviewsByServiceId(Long id) {
+        return reviewRepository.countReviewsByDealId(id);
     }
 
     @Transactional
     public Review create(ReviewCreateDTO reviewCreateDTO) {
         final Review review = reviewDTOMapper.toEntity(reviewCreateDTO);
-        review.setDeal(dealService.getById(reviewCreateDTO.dealId()));
+        // review.setDeal(userAdService.getById(reviewCreateDTO.dealId()));
         review.setUser(userService.get(reviewCreateDTO.userId()));
         review.setGrade(reviewCreateDTO.grade());
         review.setDate(LocalDateTime.now());

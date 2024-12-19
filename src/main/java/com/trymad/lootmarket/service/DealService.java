@@ -24,7 +24,6 @@ import lombok.RequiredArgsConstructor;
 public class DealService {
 
     private final UserService userService;
-    private final CategoryService categoryService;
     private final PaymentSystemService paymentSystemService;
 
     private final DealRepository dealRepository;
@@ -48,13 +47,17 @@ public class DealService {
                 () -> new EntityNotFoundException("Dealstatus " + dealStatus + " doesn`t exists"));
     }
 
+    @Transactional(readOnly = true)
+    public List<Deal> getByServiceId(Long id) {
+        return dealRepository.fetchFindByServiceId(id);
+    }
+
     @Transactional
     public Deal create(DealCreateDTO createDTO) {
         final Deal deal = dealDTOMapper.toEntity(createDTO);
         deal.setDealStart(LocalDateTime.now());
         deal.setBuyer(userService.get(createDTO.buyerId()));
         deal.setPaymentSystem(paymentSystemService.get(createDTO.paymentSystemId()));
-        deal.setService(categoryService.get(createDTO.serviceId()));
         deal.setDealStatus(this.getDealStatus(createDTO.dealStatus()));
 
         return dealRepository.save(deal);
@@ -73,6 +76,11 @@ public class DealService {
     @Transactional
     public void delete(Long id) {
         dealRepository.deleteById(id);
+    }
+
+    @Transactional
+    public List<Deal> getByDate(LocalDateTime from, LocalDateTime to) {
+        return dealRepository.fetchFindByDate(from, to);
     }
 
     public boolean exists(Long id) {

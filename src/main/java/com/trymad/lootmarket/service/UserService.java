@@ -1,13 +1,23 @@
 package com.trymad.lootmarket.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.trymad.lootmarket.repository.user.UserRepository;
+import com.trymad.lootmarket.repository.user.role.RoleService;
+import com.trymad.lootmarket.web.dto.paymentSystem.PaymentSystemDTOMapper;
+import com.trymad.lootmarket.web.dto.userDto.UserStatsDTO;
+import com.trymad.lootmarket.model.MyUserDetails;
+import com.trymad.lootmarket.model.Role;
+import com.trymad.lootmarket.model.RoleEntity;
 import com.trymad.lootmarket.model.User;
 
 import jakarta.persistence.EntityNotFoundException;
@@ -18,9 +28,11 @@ import lombok.extern.slf4j.Slf4j;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
+    private final RoleService roleService;
+    private final PaymentSystemDTOMapper paymentSystemMapper;
 
     @Transactional(readOnly = true)
     public User get(UUID uuid) {
@@ -34,6 +46,14 @@ public class UserService {
 
     public User getReference(UUID uuid) {
         return userRepository.getReferenceById(uuid);
+    }
+
+    public UserDetails loadUserByUsername(String mail) throws UsernameNotFoundException {
+        final User user = userRepository.findByMail(mail).orElseThrow(
+            () -> new EntityNotFoundException("User with mail " + mail + " not found")
+        );
+
+        return new MyUserDetails(user);
     }
 
     public EntityNotFoundException notFoundExceptionById(UUID uuid) {
@@ -99,13 +119,49 @@ public class UserService {
         userRepository.deleteById(uuid);
     }
 
+    @Transactional
+    public void setRole(Role role, UUID userId) {
+        RoleEntity roleEntity = roleService.get(role);
+        User user = this.get(userId);
+        user.getRoles().clear();
+        user.getRoles().add(roleEntity);
+    }
+
+    @Transactional
+    public UserStatsDTO getStats(UUID userId) {
+        existsByIdOrThrow(userId);
+
+        return UserStatsDTO.builder()
+
+        .servicesPosted(userRepository.countTotalServicesPosted(userId))
+        .servicesSold(userRepository.countTotalServicesSold(userId))
+        .servicesPurchased(userRepository.countTotalServicesPurchased(userId))
+        .paymentSystems(
+            paymentSystemMapper.toDto(userRepository.findPaymentSystems(userId)))
+        .activityDates(userRepository.findActivityDates(userId))
+        .serviceSaleDates(userRepository.findServiceSaleDates(userId))
+        .servicePurchaseDates(userRepository.findServicePurchaseDates(userId))
+
+        .build();
+    }
+
     @Transactional(readOnly = true)
     public void enrichUserData(User user) {
         log.debug("Enrich user, uuid: {}", user.getId());
 
         final User inBaseUser = this.get(user.getId());
+        user.setPassword(inBaseUser.getPassword());
         user.setLastEnter(inBaseUser.getLastEnter());
         user.setLastUpdate(inBaseUser.getLastUpdate());
         user.setRegistrationDate(inBaseUser.getRegistrationDate());
+        user.setRoles(inBaseUser.getRoles());
+    }
+
+    public List<LocalDateTime> getActivitiesByDate(LocalDateTime from, LocalDateTime to) {
+        return userRepository.findActivityDatesByDate(from, to);
+    }
+
+    public List<LocalDateTime> getRegistrationDatesByDate(LocalDateTime from, LocalDateTime to) {
+        return userRepository.findRegistrationTimesByDate(from, to);
     }
 }

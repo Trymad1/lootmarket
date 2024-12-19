@@ -30,10 +30,9 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewDTOMapper reviewDTOMapper;
 
-    @GetMapping
-    public List<ReviewDTO> getAll(@RequestParam(required = false) Long id) {
-        final List<Review> reviews = id == null ? reviewService.getAll() : reviewService.getAllByDealId(id);
-        return reviewDTOMapper.toDto(reviews);
+    @GetMapping("{id}") // TODO
+    public List<ReviewDTO> getAllByServiceId(@PathVariable Long id) {
+        return reviewDTOMapper.toDto(reviewService.getByServiceId(id));
     }
 
     @PostMapping

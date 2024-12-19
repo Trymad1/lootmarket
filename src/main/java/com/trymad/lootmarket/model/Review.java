@@ -30,7 +30,7 @@ public class Review {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "deal_id")
-    private Deal deal;
+    private UserAd deal;
 
     private int grade;
 
