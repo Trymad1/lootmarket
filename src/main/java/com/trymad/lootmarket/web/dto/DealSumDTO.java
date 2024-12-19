@@ -12,5 +12,5 @@ import lombok.Setter;
 public class DealSumDTO {
     
     private final LocalDateTime time;
-    private final int sum;
+    private final Long sum;
 }

@@ -36,7 +36,7 @@ public class StatService {
         List<DealSumDTO> dealSum = dealsByDate.stream()
         .map(deal -> {
             int count = deal.getBuyedQuantity() == null ? 1 : deal.getBuyedQuantity();
-            int sum = deal.getService().getPrice() * count;
+            Long sum = (long) deal.getService().getPrice() * count;
             return new DealSumDTO(deal.getDealEnd(), sum);
         }).toList();
 

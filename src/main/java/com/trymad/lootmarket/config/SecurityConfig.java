@@ -2,7 +2,6 @@ package com.trymad.lootmarket.config;
 
 import java.util.Arrays;
 
-import org.apache.catalina.filters.RequestFilter;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
