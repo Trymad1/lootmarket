@@ -1,5 +1,6 @@
 package com.trymad.lootmarket.repository.userAd;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,5 +17,8 @@ public interface UserAdRepository extends JpaRepository<UserAd, Long> {
 
     @Query("SELECT ua FROM UserAd ua JOIN FETCH ua.author JOIN FETCH ua.category WHERE ua.id = :id")
     Optional<UserAd> fetchFindById(@Param("id") Long id);
+
+    @Query("SELECT ua.createDate FROM UserAd ua WHERE ua.createDate BETWEEN :from AND :to")
+    List<LocalDateTime> findServicesByDate(@Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
 
 }

@@ -76,6 +76,10 @@ public class UserAdService {
         userAdRepository.deleteById(id);
     }
 
+    public List<LocalDateTime> getServicesByDate(LocalDateTime from, LocalDateTime to) {
+        return userAdRepository.findServicesByDate(from, to);
+    }
+
     private EntityNotFoundException notFoundExceptionById(Long id) {
         return new EntityNotFoundException("UserAd with id " + id + " not found");
     }

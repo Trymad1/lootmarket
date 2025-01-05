@@ -20,6 +20,7 @@ public class StatService {
 
     private final UserService userService;
     private final DealService dealService;
+    private final UserAdService userAdService;
 
     @Transactional(readOnly = true)
     public SiteStatsDTO getStatsByDate(LocalDateTime from, LocalDateTime to) {
@@ -32,6 +33,7 @@ public class StatService {
         
         List<LocalDateTime> registrationTimes = userService.getRegistrationDatesByDate(from, to);
         List<LocalDateTime> activitiesTimes = userService.getActivitiesByDate(from, to);
+        List<LocalDateTime> servicesTimes = userAdService.getServicesByDate(from,to);
         List<Deal> dealsByDate = dealService.getByDate(from, to);
         List<DealSumDTO> dealSum = dealsByDate.stream()
         .map(deal -> {
@@ -40,6 +42,6 @@ public class StatService {
             return new DealSumDTO(deal.getDealEnd(), sum);
         }).toList();
 
-        return new SiteStatsDTO(activitiesTimes, registrationTimes, dealSum);
+        return new SiteStatsDTO(activitiesTimes, registrationTimes, servicesTimes, dealSum);
     }
 }

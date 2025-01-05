@@ -6,6 +6,7 @@ import java.util.List;
 public record SiteStatsDTO(
     List<LocalDateTime> activities, 
     List<LocalDateTime> registration, 
+    List<LocalDateTime> services,
     List<DealSumDTO> deals) {
 
 }
