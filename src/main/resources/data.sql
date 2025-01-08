@@ -6639,7 +6639,7 @@ INSERT INTO reviews (user_id, deal_id, grade, comment, DATE) VALUES
 ('fa8b63f1-5767-4de1-90bb-fcf907ac5ee3', 14, 5, 'Random review comment for deal 14 and user fa8b63f1-5767-4de1-90bb-fcf907ac5ee3', '2023-12-28 00:00:00'),
 ('bea82191-5609-48aa-9db3-ac891e0449c9', 40, 4, 'Random review comment for deal 40 and user bea82191-5609-48aa-9db3-ac891e0449c9', '2022-08-08 00:00:00');
 
-INSERT INTO roles (name) VALUES ('ROLE_ADMIN'), ('ROLE_MODERATOR'), ('ROLE_USER');
+INSERT INTO roles (name) VALUES ('ROLE_ADMIN'), ('ROLE_MODERATOR'), ('ROLE_USER'), ('ROLE_FINANCY');
 INSERT INTO user_roles (user_id, role_id) VALUES 
 ('650116e3-27c6-441b-af25-da845348b39d', 1),
 ('f813afa8-7af6-48c4-9351-d8a5a610b061', 2),
@@ -6687,10 +6687,10 @@ INSERT INTO user_roles (user_id, role_id) VALUES
 ('5079395d-d1c0-4986-b1a6-10b8a971a7c1', 3),
 ('2c98c038-674b-4bcd-8570-b2687f95d26d', 3),
 ('49e9dd44-787d-4f00-aeb2-83bb2e671076', 3),
-('344a289d-6200-4b53-85da-c774ea1f96aa', 3),
+('344a289d-6200-4b53-85da-c774ea1f96aa', 4),
 ('21ff0069-de62-482e-8ebb-fa8285d03ce5', 3),
 ('c178cc5a-6ad4-4fd8-a673-c92203cb6b26', 3),
-('807a083a-912e-4c3f-b9e3-5b29fcad83b4', 3); 
+('807a083a-912e-4c3f-b9e3-5b29fcad83b4', 4); 
 
 
 
