@@ -32,7 +32,22 @@ public interface DealRepository extends JpaRepository<Deal, Long> {
         JOIN FETCH paymentSystem 
         JOIN FETCH dealStatus 
         WHERE d.dealEnd IS NOT NULL AND d.dealEnd BETWEEN :from AND :to
-            
+        ORDER BY d.dealStart    
             """)
     List<Deal> fetchFindByDate(@Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
+
+    @Query("""
+        SELECT d FROM Deal d 
+        JOIN FETCH service 
+        JOIN FETCH service.category
+        JOIN FETCH service.author
+        JOIN FETCH service.author.roles
+        JOIN FETCH buyer 
+        JOIN FETCH buyer.roles 
+        JOIN FETCH paymentSystem 
+        JOIN FETCH dealStatus 
+        WHERE d.dealEnd BETWEEN :from AND :to OR (d.dealStart BETWEEN :from AND :to AND d.dealEnd is NULL)
+        ORDER BY d.dealStart    
+            """)
+    List<Deal> fetchFindByDateAll(@Param("from") LocalDateTime from, @Param("to") LocalDateTime to);
 }

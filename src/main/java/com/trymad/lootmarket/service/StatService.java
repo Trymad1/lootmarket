@@ -34,7 +34,7 @@ public class StatService {
         List<LocalDateTime> registrationTimes = userService.getRegistrationDatesByDate(from, to);
         List<LocalDateTime> activitiesTimes = userService.getActivitiesByDate(from, to);
         List<LocalDateTime> servicesTimes = userAdService.getServicesByDate(from,to);
-        List<Deal> dealsByDate = dealService.getByDate(from, to);
+        List<Deal> dealsByDate = dealService.getByDate(from, to, false);
         List<DealSumDTO> dealSum = dealsByDate.stream()
         .map(deal -> {
             int count = deal.getBuyedQuantity() == null ? 1 : deal.getBuyedQuantity();

@@ -1,6 +1,7 @@
 package com.trymad.lootmarket.web.controller;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
@@ -26,7 +27,7 @@ public class ReportController {
 	@GetMapping("/deals")
 	public ResponseEntity<byte[]> generateReport() throws IOException, DocumentException {
         // Генерируем PDF отчет
-        byte[] pdfBytes = reportGeneratorService.generateReport();
+        byte[] pdfBytes = reportGeneratorService.generateReport(LocalDateTime.of(2020, 1, 1, 1, 1, 1), LocalDateTime.now());
 
         // Настройки заголовков для ответа
         HttpHeaders headers = new HttpHeaders();
