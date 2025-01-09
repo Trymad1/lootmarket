@@ -21,6 +21,8 @@ public interface UserAdDTOMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createDate", ignore = true)
     @Mapping(target = "updateDate", ignore = true)
+    @Mapping(target = "deals", ignore = true)
+    @Mapping(target = "reviews", ignore = true)
     UserAd toEntity(UserAdCreateDTO userAdCreateDTO);
 
     @Mapping(target = "category", ignore = true)
@@ -28,10 +30,14 @@ public interface UserAdDTOMapper {
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "createDate", ignore = true)
     @Mapping(target = "updateDate", ignore = true)
+    @Mapping(target = "deals", ignore = true)
+    @Mapping(target = "reviews", ignore = true)
     UserAd toEntity(UserAdUpdateDTO userAdUpdateDTO);
 
     @Mapping(target = "category", ignore = true)
     @Mapping(target = "author", ignore = true)
+    @Mapping(target = "deals", ignore = true)
+    @Mapping(target = "reviews", ignore = true)
     UserAd toEntity(UserAdDTO userAdDTO);
 
     List<UserAdDTO> toDto(List<UserAd> userAds);

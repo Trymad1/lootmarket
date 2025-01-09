@@ -18,7 +18,6 @@ import org.springframework.stereotype.Component;
 
 import com.trymad.lootmarket.model.MyUserDetails;
 import com.trymad.lootmarket.model.Role;
-import com.trymad.lootmarket.model.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

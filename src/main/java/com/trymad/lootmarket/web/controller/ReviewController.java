@@ -9,10 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.trymad.lootmarket.model.Review;
 import com.trymad.lootmarket.service.ReviewService;
 import com.trymad.lootmarket.web.dto.review.ReviewCreateDTO;
 import com.trymad.lootmarket.web.dto.review.ReviewDTO;
@@ -30,7 +28,7 @@ public class ReviewController {
     private final ReviewService reviewService;
     private final ReviewDTOMapper reviewDTOMapper;
 
-    @GetMapping("{id}") // TODO
+    @GetMapping("{id}") 
     public List<ReviewDTO> getAllByServiceId(@PathVariable Long id) {
         return reviewDTOMapper.toDto(reviewService.getByServiceId(id));
     }
