@@ -23,6 +23,13 @@ ALTER SEQUENCE users_activity_id_seq RESTART WITH 1;
 
 INSERT INTO users (id, name, mail, password, banned, registration_date, last_enter, last_update) VALUES 
 ('650116e3-27c6-441b-af25-da845348b39d', 'Oleg', 'Oleg@gmail.com', '$2a$10$7ehnNRnrJIWmuLBJ96lcW.1HIVOKOWvYn0mlQwSSsEWw20YZII6sq', FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
+('da4834a7-2c8b-405e-89d6-86569c7bf7e0', 'Vlad', 'Vlad@mail.ru', '$2a$10$n490TGvUd9R8j4lOqZUPl.M6KQ5X195Gsf65rbAri7PhuCGtCcnoC', FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
+('cfa0bb4a-d9b3-4f78-a89f-9fccf76c06dd', 'Olga', 'Olga@gmail.com', '$2a$10$zy97jR7u.db84jsgZFrM7eqhheba3ZfTFj6QMK1egIQqAYt9Bu80a', FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
+('0e4c599f-3eaf-4947-989a-6a4b7e33f99d', 'Alexander', 'Alexander@mail.ru', '$2a$10$5JCDhZmokVSWbI8RQN0cDe9G6GJtMm6wg4Xzg9kfKAjI1edI04tsm', FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
+('4e1dccea-b93b-477a-b390-353b68a002bc', 'Maxim', 'Maxim@gmail.com', '$2a$10$5Pg57V5LJz9kNo7iphH/puDS7VZGsVrCZ5cAPNfTM18LGoYbgyvvm', FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
+('920bab12-24fe-4a30-b6c2-904fa3bfc9fe', 'Danil', 'Danil@mail.ru', '$2a$10$xrGWJUKfFFRHtPxMVAcOWegUauteaNaR6uxXu4T5zrKL66GY4lM3i', FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
+('927753b2-8d96-4bca-ac56-79b7d570abfd', 'Nastya', 'Nastya@gmail.com', '$2a$10$X13OU8JWjCblkweJe6esJekzqQr3r0Rvm6.84CKaB.PTXrYzetCCu', FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
+('cfca0253-243d-4d1a-9e1b-1553a8f5f748', 'Anna', 'Anna@mail.ru', '$2a$10$cmR1KZRyVOvd5aHX.AX3FOhH4GPOWgDTt86FgSsEwMRKFZDva2UOG', FALSE, '2024-05-25 00:00:00', '2024-11-15 00:00:00', '2024-11-08 00:00:00'),
 ('f813afa8-7af6-48c4-9351-d8a5a610b061', 'Bruce', 'bruce.moore@hotmail.com', 'e5744e832883d71791f5ff297c179ee5af13ca51a9af10b1abcbba1c9a4969fe', FALSE, '2024-04-01 00:00:00', '2024-11-10 00:00:00', '2024-09-18 00:00:00'),
 ('280ab1b6-276b-4e18-af4b-9549757b6133', 'Kyle', 'kyle.tucker@hotmail.com', 'c1cffbb51ad5664c697d0ae05719a3460273cd48eec8191c1480018aee623e1d', FALSE, '2024-04-05 00:00:00', '2024-12-12 00:00:00', '2024-09-21 00:00:00'),
 ('fa8b63f1-5767-4de1-90bb-fcf907ac5ee3', 'Andrea', 'andrea.cantu@gmail.com', 'ab28e582860a7da21b9efb0b3adf9ca1f3e2f6b1d892a3b2e69fe79600e41e84', FALSE, '2023-09-11 00:00:00', '2024-03-29 00:00:00', '2024-02-14 00:00:00'),
@@ -65,12 +72,12 @@ INSERT INTO users (id, name, mail, password, banned, registration_date, last_ent
 ('ce575100-8a73-4af0-9a9d-55fda7259473', 'Susan', 'susan.everett@gmail.com', 'd58f1f1757d52fe0e6be30d11d156ebcd99475df75a509950426d8b8ca05e837', TRUE, '2023-07-27 00:00:00', '2023-12-30 00:00:00', '2023-12-07 00:00:00'),
 ('9bafa63d-214a-4c4f-90d3-09f81befde85', 'Catherine', 'catherine.rivera@hotmail.com', '37181ce28e728fcb462b5597e61eb2231cb85d43074e87202ec5299d9fca94b9', TRUE, '2024-04-18 00:00:00', '2024-06-19 00:00:00', '2024-05-13 00:00:00'),
 ('1eef54f6-86f6-4e1d-8301-0108f0d3e06e', 'Kathy', 'kathy.vargas@yahoo.com', '22a0cbe8da27276b924e9d520ed09a1b5860360e23e1399e6d6a2b6124320d11', FALSE, '2022-10-02 00:00:00', '2023-01-06 00:00:00', '2022-10-16 00:00:00'),
-('5079395d-d1c0-4986-b1a6-10b8a971a7c1', 'Anna', 'anna.welch@hotmail.com', '99e95636bcb3aa37210a10b52719f271b32de3032b03ef70b7016a1bd91647a5', TRUE, '2022-10-24 00:00:00', '2023-04-07 00:00:00', '2023-03-11 00:00:00'),
+('5079395d-d1c0-4986-b1a6-10b8a971a7c1', 'Annastasy', 'anna.welch@hotmail.com', '99e95636bcb3aa37210a10b52719f271b32de3032b03ef70b7016a1bd91647a5', TRUE, '2022-10-24 00:00:00', '2023-04-07 00:00:00', '2023-03-11 00:00:00'),
 ('2c98c038-674b-4bcd-8570-b2687f95d26d', 'Molly', 'molly.anderson@hotmail.com', '775cd819d8fd66feac2943e2acb41e811a14976113657de72ce57d9a78fc0a48', TRUE, '2023-12-05 00:00:00', '2024-06-06 00:00:00', '2024-06-02 00:00:00'),
 ('49e9dd44-787d-4f00-aeb2-83bb2e671076', 'Rhonda', 'rhonda.moore@yahoo.com', '08c4fde8b302d3af4ec400342b10ab9ab09aa4603b5f1d826e0feaced0b51055', FALSE, '2022-04-26 00:00:00', '2022-10-19 00:00:00', '2022-08-10 00:00:00'),
 ('344a289d-6200-4b53-85da-c774ea1f96aa', 'Lori', 'lori.silva@yahoo.com', 'ec2a24627f2b059ab453c905236133c8cb29ca51afaf8df5ed53ce2dd9b92d98', TRUE, '2024-10-01 00:00:00', '2025-05-14 00:00:00', '2025-02-26 00:00:00'),
 ('21ff0069-de62-482e-8ebb-fa8285d03ce5', 'Renee', 'renee.rios@hotmail.com', '3b37f3633e30f9cd58db6394127f09d29387fcc00c44584f372bbebeeb60de33', TRUE, '2024-07-01 00:00:00', '2024-09-28 00:00:00', '2024-08-05 00:00:00'),
-('c178cc5a-6ad4-4fd8-a673-c92203cb6b26', 'Alexander', 'alexander.kramer@yahoo.com', '3d85bcca98cf62151217b7801fdaa957fc9b1127f2e44faf79cbc70c0f5b4078', TRUE, '2023-08-05 00:00:00', '2024-01-31 00:00:00', '2023-12-10 00:00:00'),
+('c178cc5a-6ad4-4fd8-a673-c92203cb6b26', 'Alexy', 'alexander.kramer@yahoo.com', '3d85bcca98cf62151217b7801fdaa957fc9b1127f2e44faf79cbc70c0f5b4078', TRUE, '2023-08-05 00:00:00', '2024-01-31 00:00:00', '2023-12-10 00:00:00'),
 ('807a083a-912e-4c3f-b9e3-5b29fcad83b4', 'Sheri', 'sheri.conrad@gmail.com', '5923fdb88a84d346f87a96201a3ed39d57ecdbdfd5637b2124abb9a7131c1b32', FALSE, '2022-03-29 00:00:00', '2022-08-04 00:00:00', '2022-05-06 00:00:00');
 
 INSERT INTO games (name) VALUES 
@@ -6642,6 +6649,13 @@ INSERT INTO reviews (user_id, deal_id, grade, comment, DATE) VALUES
 INSERT INTO roles (name) VALUES ('ROLE_ADMIN'), ('ROLE_MODERATOR'), ('ROLE_USER'), ('ROLE_FINANCY');
 INSERT INTO user_roles (user_id, role_id) VALUES 
 ('650116e3-27c6-441b-af25-da845348b39d', 1),
+('da4834a7-2c8b-405e-89d6-86569c7bf7e0', 1),
+('cfa0bb4a-d9b3-4f78-a89f-9fccf76c06dd', 2),
+('0e4c599f-3eaf-4947-989a-6a4b7e33f99d', 2),
+('4e1dccea-b93b-477a-b390-353b68a002bc', 3),
+('920bab12-24fe-4a30-b6c2-904fa3bfc9fe', 3),
+('927753b2-8d96-4bca-ac56-79b7d570abfd', 4),
+('cfca0253-243d-4d1a-9e1b-1553a8f5f748', 4),
 ('f813afa8-7af6-48c4-9351-d8a5a610b061', 2),
 ('280ab1b6-276b-4e18-af4b-9549757b6133', 2),
 ('fa8b63f1-5767-4de1-90bb-fcf907ac5ee3', 2),
