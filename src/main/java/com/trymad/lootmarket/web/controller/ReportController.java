@@ -26,15 +26,12 @@ public class ReportController {
 
 	@GetMapping("/deals")
 	public ResponseEntity<byte[]> generateReport() throws IOException, DocumentException {
-        // Генерируем PDF отчет
         byte[] pdfBytes = reportGeneratorService.generateReport(LocalDateTime.of(2020, 1, 1, 1, 1, 1), LocalDateTime.now());
 
-        // Настройки заголовков для ответа
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
-        headers.setContentDispositionFormData("attachment", "report.pdf");
+        headers.setContentDispositionFormData("attachment", "deal-report.pdf");
 
-        // Возвращаем PDF файл в ответе
         return ResponseEntity.ok()
                 .headers(headers)
                 .body(pdfBytes);

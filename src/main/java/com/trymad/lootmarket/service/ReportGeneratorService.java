@@ -112,6 +112,7 @@ public class ReportGeneratorService {
             table.addCell(createCell(deal.getService().getAuthor().getName(), font, Element.ALIGN_CENTER));
             table.addCell(createCell(deal.getBuyer().getName(), font, Element.ALIGN_CENTER));
             table.addCell(createCell(deal.getBuyedQuantity() == null ? "1" : deal.getBuyedQuantity().toString(), font, Element.ALIGN_CENTER));
+            table.addCell(createCell(sum.toString(), font, Element.ALIGN_CENTER));
             table.addCell(createCell(deal.getPaymentSystem().getName(), font, Element.ALIGN_CENTER));
             table.addCell(createCell(statusName, font, Element.ALIGN_CENTER));
             table.addCell(createCell(dealStart, font, Element.ALIGN_CENTER));
@@ -146,20 +147,24 @@ public class ReportGeneratorService {
         document.add(new Chunk("\n"));
     }
 
-    private PdfPTable createTable(Font font) throws DocumentException {
-        PdfPTable table = new PdfPTable(8);
+    private PdfPTable createTable(Font font) throws DocumentException, IOException {
+        PdfPTable table = new PdfPTable(9);
         table.setWidthPercentage(100);
         table.setSpacingBefore(10);
         table.setSpacingAfter(10);
 
-        float[] columnWidths = { 1f, 2f, 2f, 1f, 2f, 2f, 2f, 2f };
+        float[] columnWidths = { 1f, 1.8f, 2.1f, 1f, 1.5f, 1.5f, 2f, 2f, 2f};
         table.setWidths(columnWidths);
-
+        ClassPathResource resource = new ClassPathResource("DejaVuSans.ttf");
+        
+        String fontPath = resource.getPath();
+        BaseFont baseFont = BaseFont.createFont(fontPath, BaseFont.IDENTITY_H, BaseFont.EMBEDDED);
         table.addCell(createCell("ID", font, Element.ALIGN_CENTER));
         table.addCell(createCell("Продавец", font, Element.ALIGN_CENTER));
         table.addCell(createCell("Покупатель", font, Element.ALIGN_CENTER));
-        table.addCell(createCell("Кол-во", font, Element.ALIGN_CENTER));
-        table.addCell(createCell("Платёжная система", font, Element.ALIGN_CENTER));
+        table.addCell(createCell("Куплено", new Font(baseFont, 9, Font.NORMAL), Element.ALIGN_CENTER));
+        table.addCell(createCell("Сумма сделки", font, Element.ALIGN_CENTER));
+        table.addCell(createCell("Платёжная система", new Font(baseFont, 9, Font.NORMAL), Element.ALIGN_CENTER));
         table.addCell(createCell("Статус сделки", font, Element.ALIGN_CENTER));
         table.addCell(createCell("Дата начала", font, Element.ALIGN_CENTER));
         table.addCell(createCell("Дата Закрытия", font, Element.ALIGN_CENTER));
