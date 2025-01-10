@@ -33,7 +33,7 @@ public class DealController {
         return dealDTOMapper.toDto(dealService.getAll());
     }
 
-    @GetMapping("{id}") //TODO not rest valid path
+    @GetMapping("{id}") 
     public List<DealDTO> getAllByServiceId(@PathVariable Long id) {
         return dealDTOMapper.toDto(dealService.getByServiceId(id));
     }

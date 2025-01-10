@@ -11,8 +11,6 @@ import org.springframework.data.repository.query.Param;
 
 import com.trymad.lootmarket.model.PaymentSystem;
 import com.trymad.lootmarket.model.User;
-import com.trymad.lootmarket.web.dto.paymentSystem.PaymentSystemDTO;
-import com.trymad.lootmarket.web.dto.userDto.UserStatsDTO;
 
 public interface UserRepository extends JpaRepository<User, UUID> {
 

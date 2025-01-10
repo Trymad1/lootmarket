@@ -79,8 +79,8 @@ public class DealService {
     }
 
     @Transactional
-    public List<Deal> getByDate(LocalDateTime from, LocalDateTime to) {
-        return dealRepository.fetchFindByDate(from, to);
+    public List<Deal> getByDate(LocalDateTime from, LocalDateTime to, boolean all) {
+        return all ? dealRepository.fetchFindByDateAll(from, to) : dealRepository.fetchFindByDate(from, to);
     }
 
     public boolean exists(Long id) {

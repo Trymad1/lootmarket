@@ -3,7 +3,6 @@ package com.trymad.lootmarket.web.dto.userDto;
 import java.time.LocalDateTime;
 import java.util.List;
 
-import com.trymad.lootmarket.model.PaymentSystem;
 import com.trymad.lootmarket.web.dto.paymentSystem.PaymentSystemDTO;
 
 import lombok.Builder;

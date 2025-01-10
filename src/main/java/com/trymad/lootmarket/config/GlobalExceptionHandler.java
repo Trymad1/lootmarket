@@ -40,7 +40,7 @@ public class GlobalExceptionHandler {
         final StringBuilder messageBuilder = new StringBuilder();
         fieldErrors.stream().map(fieldError -> fieldError.getField() + ": " + fieldError.getDefaultMessage())
                 .forEach(errorField -> messageBuilder.append(errorField + " | "));
-        final String message = messageBuilder.substring(0, messageBuilder.length() - 3); // cut | symbol in end, TODO
+        final String message = messageBuilder.substring(0, messageBuilder.length() - 3); 
 
         return responseSupplyer.getResponse(HttpStatus.BAD_REQUEST, request, message);
     }

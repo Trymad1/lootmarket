@@ -10,8 +10,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import com.trymad.lootmarket.model.User;
-import com.trymad.lootmarket.service.UserService;
 import com.trymad.lootmarket.web.dto.userDto.LoginDTO;
 
 import lombok.RequiredArgsConstructor;
@@ -23,7 +21,6 @@ public class AuthenticationService {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authManager;
-    private final UserService userService;
 
     public String createJwtToken(LoginDTO loginDTO) {
         final UserDetails userDetails = (UserDetails) authManager.authenticate(
